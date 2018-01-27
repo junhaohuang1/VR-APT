@@ -56,22 +56,22 @@ export default class InputBox extends React.Component{
             </View>
         )
     }
-
-    //set up styles
-    var styles = StyleSheet.create({
-        container: {
-            height:4,
-            width:2,
-            padding:0.06,
-            backgroundColor: "black",
-            opacity:0.8,
-            borderColor:"white",
-            borderRadius:0.1,
-            borderWidth:0.01,
-            layoutOrigin: [0.5, 0.5]
-        },
-        texts: {
-            opacity:10
-        }
-    });
 }
+
+//set up styles
+var styles = StyleSheet.create({
+    container: {
+        height:4,
+        width:2,
+        padding:0.06,
+        backgroundColor: "black",
+        opacity:0.8,
+        borderColor:"white",
+        borderRadius:0.1,
+        borderWidth:0.01,
+        layoutOrigin: [0.5, 0.5]
+    },
+    texts: {
+        opacity:10
+    },
+});
