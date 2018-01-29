@@ -6,22 +6,22 @@
    "photos":{
       "1":{
          "rotationOffset": 0,
-         "uri":"trial.jpg",
-         "tooltips":[
+         "uri":"trial6.jpg",
+         "surroundings":[
             {
                "text":"The Bar",
                "rotationY": -9.929,
-               "linkedPhotoId":"112379"
+               "PhotoId":"112379"
             },
             {
                "text":"Biergarten",
                "rotationY": -106.844,
-               "linkedPhotoId":"112355"
+               "PhotoId":"112355"
             },
             {
                "text":"The Arthur",
                "rotationY": 170.42,
-               "linkedPhotoId":"112399"
+               "PhotoId":"112399"
             },
             {
                "type": "image",
