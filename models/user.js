@@ -1,28 +1,44 @@
 // Require mongoose
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
 // Create Schema class
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 // Create article schema
-var FriendSchema = new Schema({
-  //buddy list
-  buddyList: [
-    {
-    type: String
+const UserSchema = new Schema({
+  email: {
+    type: String,
+    index: {
+      unique: true
     }
-  ],
-  messages:[
-    {
-      user1: String,
-      user2: String,
-      imageLink: String
-    }
-  ]
+  },
+  password: String,
+  name: String
+});
 
+UserSchema.methods.comparePassword = function comparePassword(password, callback) {
+  bcrypt.compare(password, this.password, callback);
+};
+
+UserSchema.pre('save', function saveHook(next) {
+  const user = this;
+
+  // proceed further only if the password is modified or the user is new
+  if (!user.isModified('password')) return next();
+
+  return bcrypt.genSalt((saltError, salt) => {
+    if (saltError) { return next(saltError); }
+
+    return bcrypt.hash(user.password, salt, (hashError, hash) => {
+      if (hashError) { return next(hashError); }
+
+      // replace a password string with hash value
+      user.password = hash;
+
+      return next();
+    });
+  });
 });
 
 
-var Friend = mongoose.model("Friend", FriendSchema);
-
-// Export
-module.exports = Friend;
+module.exports = mongoose.model('User', UserSchema);
