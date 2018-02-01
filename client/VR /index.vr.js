@@ -86,20 +86,22 @@ export default class Final_Project extends React.Component {
                         <View>
                         {surroundings &&
                         surroundings.map((surrounding, index)=>{
-                            return(
-                                <RoomButton
-                                    key = {surrounding.PhotoId}
-                                    onClike = {()=>{
-                                        this.setState({
-                                            locationId:surrounding.PhotoId
-                                        })
-                                        console.log(locationId)
-                                    }}
-                                    pixelsPerMeter = {PPM}
-                                    text = {surrounding.text}
-                                    translateX = {degreesToPixels(surrounding.rotationY)}
-                                />
-                            )
+                            if(!surrounding.type){
+                                return(
+                                    <RoomButton
+                                        key = {surrounding.PhotoId}
+                                        onClike = {()=>{
+                                            this.setState({
+                                                locationId:surrounding.PhotoId
+                                            })
+                                            console.log(locationId)
+                                        }}
+                                        pixelsPerMeter = {PPM}
+                                        text = {surrounding.text}
+                                        translateX = {degreesToPixels(surrounding.rotationY)}
+                                    />
+                                )
+                            }
                         })}
                         </View>
                         </View>

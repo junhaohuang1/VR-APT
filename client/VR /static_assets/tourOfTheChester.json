@@ -2,28 +2,31 @@
    "nav_icon": "chester_icon.png",
    "firstSpot":"1",
    "firstSpotRotation":150,
-   
+
    "photos":{
       "1":{
          "rotationOffset": 0,
-         "uri":"trial6.jpg",
+         "uri":"/projects/industry image/spot 1.jpg",
          "surroundings":[
-            {
-               "text":"The Bar",
-               "rotationY": -9.929,
-               "PhotoId":"2"
-            },
-            {
-               "text":"Biergarten",
-               "rotationY": -106.844,
-               "PhotoId":"3"
-            },
-            {
-               "text":"The Arthur",
-               "rotationY": 170.42,
-               "PhotoId":"4"
-            }
-            
+             {
+                "text":"The Kitchen",
+                "rotationY": 30,
+                "linkedPhotoId":"2"
+             },
+             {
+                "text":"Living Room",
+                "rotationY": -10,
+                "linkedPhotoId":"3"
+             },
+             {
+                "type": "image",
+                "rotationY": 115,
+                "width": 1.020,
+                "height": 1.388,
+                "source":"chalkboard-menu.jpg",
+                "attribution": "Photo by currystrumpet on flickr",
+                "attributionUri": "https://www.flickr.com/photos/currystrumpet/7895715748"
+             }
          ]
       },
       "2":{
@@ -35,7 +38,7 @@
                "rotationY": -64.525,
                "linkedPhotoId":"112362"
             },
-           
+
             {
                "type": "textblock",
                "title": "The Chester",
