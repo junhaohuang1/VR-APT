@@ -1,7 +1,7 @@
 {
    "nav_icon": "chester_icon.png",
    "firstSpot":"1",
-   "firstSpotRotation":150,
+   "firstSpotRotation":0,
 
    "photos":{
       "1":{
@@ -32,7 +32,7 @@
          ]
       },
       "2":{
-         "rotationOffset": -120,
+         "rotationOffset": -25,
          "uri":"/projects/industry image/spot 2.jpg",
          "surroundings":[
             {
@@ -43,7 +43,7 @@
             },
             {
                "text":"Living Room",
-               "rotationY": 0,
+               "rotationY": 30,
                "PhotoId":"3",
                "factor":1
             },
@@ -58,25 +58,23 @@
             }
          ]
       },
-      "112355":{
-         "rotationOffset": -30,
-         "uri":"the-chester--v112355.prefilter.jpg",
-         "tooltips":[
+      "3":{
+         "rotationOffset": 60,
+         "uri":"/projects/industry image/spot 3.jpg",
+         "surroundings":[
             {
-               "text":"Biergarten",
-               "rotationY": 21.347,
-               "linkedPhotoId":"112393"
+               "text":"Kitchen",
+               "rotationY": 60,
+               "PhotoId":"2",
+               "factor": 1
             },
             {
-               "text":"Restaurant",
-               "rotationY": 117.441,
-               "linkedPhotoId":"112362"
+               "text":"Dinning Room",
+               "rotationY": 80,
+               "PhotoId":"1",
+               "factor": 0.7
             },
-            {
-               "text":"Biergarten",
-               "rotationY": -151.392,
-               "linkedPhotoId":"112351"
-            },
+           
             {
                "type": "panelimage",
                "rotationY": 290,
@@ -86,95 +84,6 @@
                "text": "The Chester Biergarten is ideal for group dining and social gatherings. Enjoy casual picnic-table seating and views of the historic Meatpacking District.",
                "attribution": "Photo by yutacar on upslash",
                "attributionUri": "https://unsplash.com/photos/JKMnm3CIncw"
-            }
-         ]
-      },
-      "112392":{
-         "rotationOffset": 80,
-         "uri":"the-chester--v112392.prefilter.jpg",
-         "tooltips":[
-            {
-               "text":"The Snug",
-               "rotationY": -11.33789063,
-               "linkedPhotoId":"112371"
-            },
-            {
-               "text":"Biergarten",
-               "rotationY": -112.2363281,
-               "linkedPhotoId":"112351"
-            }
-         ]
-      },
-      "112399":{
-         "rotationOffset": 90,
-         "uri":"the-chester--v112399.prefilter.jpg",
-         "tooltips":[
-            {
-               "text":"Restaurant",
-               "rotationY": -115,
-               "linkedPhotoId":"112362"
-            },
-            {
-               "type": "video",
-               "rotationY": 80,
-               "width": 2.560,
-               "height": 1.240,
-               "source":"Three-Cocktails.webm",
-               "muted":true
-            },
-            {
-               "type": "image",
-               "rotationY": -53,
-               "width": 1.020,
-               "height": 1.388,
-               "source":"chalkboard-menu.jpg",
-               "attribution": "Photo by currystrumpet on flickr",
-               "attributionUri": "https://www.flickr.com/photos/currystrumpet/7895715748"
-            }
-         ]
-      },
-      "112371":{
-         "rotationOffset": -20,
-         "uri":"the-chester--v112371.prefilter.jpg",
-         "tooltips":[
-            {
-               "text":"Biergarten",
-               "rotationY": -92.02148438,
-               "linkedPhotoId":"112392"
-            },
-            {
-               "type": "textblock",
-               "text": "Cosy athmosphere with fine leather seats. Relax with friends and select from a wide range of German beers. The late-night bites menu includes pretzels, hot wings, and sliders.",
-               "rotationY": 100.42,
-               "width": 1.0,
-               "height": 1.0
-            }
-         ]
-      },
-      "112393":{
-         "rotationOffset": 140,
-         "uri":"the-chester--v112393.prefilter.jpg",
-         "tooltips":[
-            {
-               "text":"Biergarten",
-               "rotationY": 29.348,
-               "linkedPhotoId":"112355"
-            }
-         ]
-      },
-      "112351":{
-         "rotationOffset": -80,
-         "uri":"the-chester--v112351.prefilter.jpg",
-         "tooltips":[
-            {
-               "text":"Biergarten",
-               "rotationY": -102.793,
-               "linkedPhotoId":"112392"
-            },
-            {
-               "text":"Biergarten",
-               "rotationY": 63.843,
-               "linkedPhotoId":"112355"
             }
          ]
       }

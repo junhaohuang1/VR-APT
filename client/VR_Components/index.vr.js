@@ -62,10 +62,10 @@ export default class Final_Project extends React.Component {
         const locationId = this.state.locationId;
         const panoPhoto = this.state.data.photos[locationId];
         const surroundings = (panoPhoto && panoPhoto.surroundings) || null;
-        const rotation = this.state.rotation;
+        const rotation = this.state.rotation + panoPhoto.rotationOffset;
 
         return(
-            <View>
+            <View style={{transform: [{rotateY: rotation}]}}>
                 <Pano source = {asset(panoPhoto.uri)} />
                 <CylindricalPanel
                     layer = {{
