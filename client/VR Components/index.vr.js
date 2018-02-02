@@ -98,6 +98,7 @@ export default class Final_Project extends React.Component {
                                         }}
                                         pixelsPerMeter = {PPM}
                                         text = {surrounding.text}
+                                        factor = {surrounding.factor}
                                         translateX = {degreesToPixels(surrounding.rotationY)}
                                     />
                                 )

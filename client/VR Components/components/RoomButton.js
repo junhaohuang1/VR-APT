@@ -30,7 +30,7 @@ export default class RoomButton extends React.Component {
                     style = {{
                         backgroundColor:'rgba(0,0,0,0)',
                         color:'white',
-                        fontSize:40,
+                        fontSize:40 * this.props.factor,
                         fontWeight:"800",
                         padding: 0.1 * PPM,
                         textAlign:'center',

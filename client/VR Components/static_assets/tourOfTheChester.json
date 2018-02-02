@@ -10,13 +10,15 @@
          "surroundings":[
              {
                 "text":"The Kitchen",
-                "rotationY": 30,
-                "linkedPhotoId":"2"
+                "rotationY": 20,
+                "PhotoId":"2",
+                "factor":1
              },
              {
                 "text":"Living Room",
                 "rotationY": -10,
-                "linkedPhotoId":"3"
+                "PhotoId":"3",
+                "factor":0.7
              },
              {
                 "type": "image",
@@ -31,14 +33,20 @@
       },
       "2":{
          "rotationOffset": -120,
-         "uri":"trail7.jpg",
-         "tooltips":[
+         "uri":"/projects/industry image/spot 2.jpg",
+         "surroundings":[
             {
-               "text":"Restaurant",
-               "rotationY": -64.525,
-               "linkedPhotoId":"112362"
+               "text":"Dinning Room",
+               "rotationY": -60,
+               "PhotoId":"1",
+               "factor":1
             },
-
+            {
+               "text":"Living Room",
+               "rotationY": 0,
+               "PhotoId":"3",
+               "factor":1
+            },
             {
                "type": "textblock",
                "title": "The Chester",
