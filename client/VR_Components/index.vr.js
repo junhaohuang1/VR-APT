@@ -23,7 +23,7 @@ const PPM = 1/(2 * Math.PI * 3) * MAX_TEXTURE_WIDTH;
 
 export default class Final_Project extends React.Component {
     static defaultProps = {
-      tourSource: 'Project_2.json',
+      tourSource: 'Project_4.json',
     };
 
     constructor(props) {

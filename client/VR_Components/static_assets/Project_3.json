@@ -1,28 +1,25 @@
 {
    "nav_icon": "chester_icon.png",
    "firstSpot":"1",
-   "firstSpotRotation":0,
+   "firstSpotRotation":90,
 
    "photos":{
       "1":{
-         "rotationOffset": 0,
-         "uri":"/projects/industry image/spot 1.jpg",
+         "rotationOffset": -20,
+         "uri":"/projects/Loft 2/spot 1.jpg",
          "surroundings":[
              {
-                "text":"The Kitchen",
-                "rotationY": 20,
+                "text":"Living Room",
+                "rotationY": 70,
+                "rotationZ":0,
                 "PhotoId":"2",
                 "factor":1
              },
-             {
-                "text":"Living Room",
-                "rotationY": -10,
-                "PhotoId":"3",
-                "factor":0.7
-             },
+            
              {
                 "type": "image",
                 "rotationY": 115,
+                "rotationZ":0,
                 "width": 1.020,
                 "height": 1.388,
                 "source":"chalkboard-menu.jpg",
@@ -32,18 +29,20 @@
          ]
       },
       "2":{
-         "rotationOffset": -25,
-         "uri":"/projects/industry image/spot 2.jpg",
+         "rotationOffset": -70,
+         "uri":"/projects/Loft 2/spot 2.jpg",
          "surroundings":[
             {
                "text":"Dinning Room",
-               "rotationY": -60,
+               "rotationY": 0,
+               "rotationZ":0,
                "PhotoId":"1",
-               "factor":1
+               "factor":0.6
             },
             {
-               "text":"Living Room",
-               "rotationY": 30,
+               "text":"Stair",
+               "rotationY": -60,
+               "rotationZ":10,
                "PhotoId":"3",
                "factor":1
             },
@@ -59,22 +58,54 @@
          ]
       },
       "3":{
-         "rotationOffset": 60,
-         "uri":"/projects/industry image/spot 3.jpg",
+         "rotationOffset": 10,
+         "uri":"/projects/Loft 2/spot 3.jpg",
          "surroundings":[
             {
-               "text":"Kitchen",
-               "rotationY": 60,
-               "PhotoId":"2",
+               "text":"Bedroom",
+               "rotationY": 10,
+               "rotationZ":5,
+               "PhotoId":"4",
                "factor": 1
             },
             {
-               "text":"Dinning Room",
-               "rotationY": 80,
+               "text":"Living Room",
+               "rotationY": 40,
+               "rotationZ":-30,
                "PhotoId":"1",
                "factor": 0.7
             },
            
+            {
+               "type": "panelimage",
+               "rotationY": 290,
+               "width": 1.280,
+               "height":0.850,
+               "source":"beer-cheers.jpg",
+               "text": "The Chester Biergarten is ideal for group dining and social gatherings. Enjoy casual picnic-table seating and views of the historic Meatpacking District.",
+               "attribution": "Photo by yutacar on upslash",
+               "attributionUri": "https://unsplash.com/photos/JKMnm3CIncw"
+            }
+         ]
+      },
+           "4":{
+         "rotationOffset": 10,
+         "uri":"/projects/Loft 2/spot 4.jpg",
+         "surroundings":[
+            {
+               "text":"Stair",
+               "rotationY": 160,
+               "rotationZ":-30,
+               "PhotoId":"3",
+               "factor": 1
+            },
+            {
+               "text":"Living Room",
+               "rotationY": 90,
+               "rotationZ":-33,
+               "PhotoId":"2",
+               "factor": 0.6
+            },
             {
                "type": "panelimage",
                "rotationY": 290,

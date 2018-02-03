@@ -6,17 +6,19 @@
    "photos":{
       "1":{
          "rotationOffset": 0,
-         "uri":"/projects/industry image/spot 1.jpg",
+         "uri":"/projects/zhongshi/spot 1.jpg",
          "surroundings":[
              {
                 "text":"The Kitchen",
                 "rotationY": 20,
+                "rotationZ":0,
                 "PhotoId":"2",
                 "factor":1
              },
              {
                 "text":"Living Room",
                 "rotationY": -10,
+                "rotationZ":0,
                 "PhotoId":"3",
                 "factor":0.7
              },
@@ -33,17 +35,19 @@
       },
       "2":{
          "rotationOffset": -25,
-         "uri":"/projects/industry image/spot 2.jpg",
+         "uri":"/projects/zhongshi/spot 2.jpg",
          "surroundings":[
             {
                "text":"Dinning Room",
                "rotationY": -60,
+               "rotationZ":0,
                "PhotoId":"1",
                "factor":1
             },
             {
                "text":"Living Room",
                "rotationY": 30,
+               "rotationZ":0,
                "PhotoId":"3",
                "factor":1
             },
@@ -60,17 +64,19 @@
       },
       "3":{
          "rotationOffset": 60,
-         "uri":"/projects/industry image/spot 3.jpg",
+         "uri":"/projects/zhongshi/spot 3.jpg",
          "surroundings":[
             {
                "text":"Kitchen",
                "rotationY": 60,
+               "rotationZ":0,
                "PhotoId":"2",
                "factor": 1
             },
             {
                "text":"Dinning Room",
                "rotationY": 80,
+               "rotationZ":0,
                "PhotoId":"1",
                "factor": 0.7
             },
