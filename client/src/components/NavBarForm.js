@@ -1,28 +1,30 @@
 import React from 'react';
-import {NavLink, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Auth from '../Auth';
-
+//onClick={props.logout()}
 
 const NavBarForm = props => (
-  <div>
-    <div className="top-bar">
-      <div className="top-bar-left">
-        <NavLink to="/">React App</NavLink>
-      </div>
-
+  <nav className="navbar navbar-default">
+    <div className="navbar-header">
+        <a className="navbar-brand" href="/">React App</a>
       {Auth.isUserAuthenticated() ? (
-        <div className="top-bar-right">
-          <Link to="/logout" onClick={localStorage.removeItem("token")}>Log out</Link>
-        </div>
+        <ul className="nav navbar-nav">
+          <li className="nav-item">
+            <a href="/logout" onClick={Auth.deauthenticateUser} >Log out</a>
+          </li>
+        </ul>
       ) : (
-        <div className="top-bar-right">
+        <ul className="nav navbar-nav">
+        <li className="nav-item">
           <Link to="/login">Log in</Link>
+        </li>
+        <li className="nav-item">
           <Link to="/signup">Sign up</Link>
-        </div>
+        </li>
+        </ul>
       )}
-
     </div>
-  </div>
+  </nav>
 );
 
 
