@@ -5,11 +5,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { BrowserRouter as Router} from 'react-router-dom';
 import { Redirect, Route } from 'react-router'
 import LoginPage from './containers/LoginPage.js';
-import DashboardPage from './containers/DashboardPage.js';
 import HomePage from './containers/HomePage.js';
 import SignUpPage from './containers/SignUpPage.js';
 import NavBar from './containers/NavBar.js';
 import Auth from './Auth';
+import CarouselPage from './components/Carousel'
+import Footer from './components/Footer'
+
 
 // remove tap delay, essential for MaterialUI to work properly
 // <Router history={browserHistory} routes={routes} />
@@ -22,12 +24,12 @@ const App = () => {
         <div>
           <NavBar/>
           <Route exact path = '/' component = {Auth.isUserAuthenticated()?
-            DashboardPage : HomePage
+            CarouselPage : HomePage
           }/>
           <Route exact path = '/signup' component = {SignUpPage}/>
           <Route exact path = '/login' component = {LoginPage}/>
           <Route exact path="/logout"  render={() => (<Redirect to="/"/>)}/>
-
+          <Footer />
         </div>
     </Router>
     </MuiThemeProvider>
