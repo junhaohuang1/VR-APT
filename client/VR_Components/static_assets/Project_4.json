@@ -9,11 +9,11 @@
          "uri":"/projects/zhongshi/spot 1.jpg",
          "surroundings":[
              {
-                "text":"The Kitchen",
-                "rotationY": 20,
+                "text":"Gym",
+                "rotationY": 10,
                 "rotationZ":0,
                 "PhotoId":"2",
-                "factor":1
+                "factor":0.6
              },
              {
                 "text":"Living Room",
