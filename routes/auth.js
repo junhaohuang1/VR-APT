@@ -113,15 +113,6 @@ router.post('/signup', (req, res, next) => {
   })(req, res, next);
 });
 
-router.get('/logout', function(req, res) {
-  if (localStorage.getItem('token') !== null) {
-    localStorage.removeItem("token");
-    window.location.href="/";
-    return res.status(200).json({
-      success: true,
-    });
-  }
-});
 
 router.post('/login', (req, res, next) => {
   const validationResult = validateLoginForm(req.body);
