@@ -22,7 +22,8 @@ export default class RoomButton extends React.Component {
                     layoutOrigin:[0.5,0.5],
                     position:'absolute',
                     transform:[
-                        {translateX: this.props.translateX}
+                        {translateX: this.props.translateX},
+                        {translateY: this.props.translateZ}
                     ]
                 }}
                 onClick = {() => {this.handleClick()}}>

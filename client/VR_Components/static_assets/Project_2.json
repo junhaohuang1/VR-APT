@@ -5,24 +5,27 @@
 
    "photos":{
       "1":{
-         "rotationOffset": 0,
+         "rotationOffset": -20,
          "uri":"/projects/Loft 1/spot 1.jpg",
          "surroundings":[
              {
                 "text":"Living Room",
                 "rotationY": 10,
+                "rotationZ":0,
                 "PhotoId":"2",
                 "factor":1
              },
              {
                 "text":"Sun Room",
-                "rotationY": -20,
+                "rotationY": -30,
+                "rotationZ":0,
                 "PhotoId":"3",
                 "factor":0.7
              },
              {
                 "type": "image",
                 "rotationY": 115,
+                "rotationZ":0,
                 "width": 1.020,
                 "height": 1.388,
                 "source":"chalkboard-menu.jpg",
@@ -38,12 +41,14 @@
             {
                "text":"Dinning Room",
                "rotationY": 0,
+               "rotationZ":0,
                "PhotoId":"1",
                "factor":1
             },
             {
                "text":"Sun Room",
                "rotationY": 110,
+               "rotationZ":0,
                "PhotoId":"3",
                "factor":1
             },
@@ -59,22 +64,47 @@
          ]
       },
       "3":{
-         "rotationOffset": 60,
+         "rotationOffset": 10,
          "uri":"/projects/Loft 1/spot 3.jpg",
          "surroundings":[
             {
-               "text":"Kitchen",
-               "rotationY": 60,
-               "PhotoId":"2",
+               "text":"Bedroom",
+               "rotationY": 0,
+               "rotationZ":5,
+               "PhotoId":"4",
                "factor": 1
             },
             {
-               "text":"Dinning Room",
-               "rotationY": 80,
+               "text":"Living Room",
+               "rotationY": -30,
+               "rotationZ":-30,
                "PhotoId":"1",
                "factor": 0.7
             },
            
+            {
+               "type": "panelimage",
+               "rotationY": 290,
+               "width": 1.280,
+               "height":0.850,
+               "source":"beer-cheers.jpg",
+               "text": "The Chester Biergarten is ideal for group dining and social gatherings. Enjoy casual picnic-table seating and views of the historic Meatpacking District.",
+               "attribution": "Photo by yutacar on upslash",
+               "attributionUri": "https://unsplash.com/photos/JKMnm3CIncw"
+            }
+         ]
+      },
+           "4":{
+         "rotationOffset": 10,
+         "uri":"/projects/Loft 1/spot 4.jpg",
+         "surroundings":[
+            {
+               "text":"Sun Room",
+               "rotationY": 160,
+               "rotationZ":-30,
+               "PhotoId":"3",
+               "factor": 1
+            },
             {
                "type": "panelimage",
                "rotationY": 290,
