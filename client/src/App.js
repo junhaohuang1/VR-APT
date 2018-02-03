@@ -29,7 +29,11 @@ const App = () => {
           <Route exact path = '/signup' component = {SignUpPage}/>
           <Route exact path = '/login' component = {LoginPage}/>
           <Route exact path="/logout"  render={() => (<Redirect to="/"/>)}/>
+<<<<<<< 4e1657d354e868ca2aceaf4720a2b6c80ee3f07b
           {/* <Footer /> */}
+=======
+
+>>>>>>> added in nav bar and fixed out log
         </div>
     </Router>
     </MuiThemeProvider>
