@@ -11,12 +11,14 @@
              {
                 "text":"The Kitchen",
                 "rotationY": 20,
+                "rotationZ":0,
                 "PhotoId":"2",
                 "factor":1
              },
              {
                 "text":"Living Room",
                 "rotationY": -10,
+                "rotationZ":0,
                 "PhotoId":"3",
                 "factor":0.7
              },
@@ -38,12 +40,14 @@
             {
                "text":"Dinning Room",
                "rotationY": -60,
+               "rotationZ":0,
                "PhotoId":"1",
                "factor":1
             },
             {
                "text":"Living Room",
                "rotationY": 30,
+               "rotationZ":0,
                "PhotoId":"3",
                "factor":1
             },
@@ -65,12 +69,14 @@
             {
                "text":"Kitchen",
                "rotationY": -60,
+               "rotationZ":0,
                "PhotoId":"2",
                "factor": 1
             },
             {
                "text":"Dinning Room",
                "rotationY": -40,
+               "rotationZ":0,
                "PhotoId":"1",
                "factor": 0.7
             },
@@ -78,6 +84,7 @@
             {
                "type": "panelimage",
                "rotationY": 290,
+               "rotationZ":0,
                "width": 1.280,
                "height":0.850,
                "source":"beer-cheers.jpg",

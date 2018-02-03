@@ -23,7 +23,7 @@ const PPM = 1/(2 * Math.PI * 3) * MAX_TEXTURE_WIDTH;
 
 export default class Final_Project extends React.Component {
     static defaultProps = {
-      tourSource: 'Project_1.json',
+      tourSource: 'Project_2.json',
     };
 
     constructor(props) {
@@ -100,6 +100,7 @@ export default class Final_Project extends React.Component {
                                         text = {surrounding.text}
                                         factor = {surrounding.factor}
                                         translateX = {degreesToPixels(surrounding.rotationY)}
+                                        translateZ = {degreesToPixels(surrounding.rotationZ)}
                                     />
                                 )
                             }
