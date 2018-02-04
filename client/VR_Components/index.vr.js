@@ -14,7 +14,7 @@ import {
 import CylindricalPanel from 'CylindricalPanel';
 
 const MAX_TEXTURE_WIDTH = 4096;
-const MAX_TEXTURE_HEIGHT = 720;
+const MAX_TEXTURE_HEIGHT = 1000;
 
 //convert for rotation
 const degreesToPixels = degrees => (degrees / 360) * MAX_TEXTURE_WIDTH
@@ -62,7 +62,7 @@ export default class Final_Project extends React.Component {
         const locationId = this.state.locationId;
         const panoPhoto = this.state.data.photos[locationId];
         const surroundings = (panoPhoto && panoPhoto.surroundings) || null;
-        const rotation =  panoPhoto.rotationOffset;
+        const rotation =  this.state.rotation + panoPhoto.rotationOffset;
 
         return(
             <View style={{transform: [{rotateY: rotation}]}}>
