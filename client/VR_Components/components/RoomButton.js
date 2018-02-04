@@ -4,13 +4,14 @@ const Easing = require('Easing')
 
 export default class RoomButton extends React.Component {
 
-
     constructor(props){
         super();
 
         this.handleClick = this.handleClick.bind(this)
         this.state = {
-            gazed: false,
+            //gazed to check whether mouse hover
+            gazed: 0,
+            //tranY for animation
             transY: new Animated.Value(0)
         }
     }
@@ -18,13 +19,14 @@ export default class RoomButton extends React.Component {
     handleClick(){this.props.onClike()}
 
     handleEnter(){
-        this.setState({gazed:true})
+        this.setState({gazed: 1})
     }
 
     handleExit(){
-        this.setState({gazed:false})
+        this.setState({gazed: 0})
     }
 
+//handle animation
     handleAni(){
         const PPM = this.props.pixelsPerMeter;
         const factor = this.props.factor;
@@ -33,10 +35,15 @@ export default class RoomButton extends React.Component {
         Animated.timing(
             this.state.transY,
             {
-                toValue: 1 * Pactor,
+                toValue: 0.1 * Pactor,
                 easing:Easing.bounce
             }
         ).start();
+    }
+
+    endAni(){
+        this.state.transY.stopAnimation();
+        this.state.transY.setValue(0);
     }
 
     render(){
@@ -68,7 +75,8 @@ export default class RoomButton extends React.Component {
                             {translateY: this.state.transY}
                         ]
                     }}
-                    onEnter = {this.handleAni.bind(this)}>
+                    onEnter = {this.handleAni.bind(this)}
+                    onExit = {this.endAni.bind(this)}>
                     <Image
                         style = {{
                             height: 0.6 * Pactor,
@@ -79,7 +87,6 @@ export default class RoomButton extends React.Component {
                         }}
                         source = {{uri:"../static_assets/icon.png"}}/>
                 </Animated.View>
-                { this.state.gazed &&
                 <Text
                     style = {{
                         backgroundColor:'rgba(0,0,0,0)',
@@ -89,10 +96,11 @@ export default class RoomButton extends React.Component {
                         padding: 0.1 * Pactor ,
                         textAlign:'center',
                         textAlignVertical:'auto',
-                        marginLeft: 0.8 * Pactor
+                        marginLeft: 0 * Pactor,
+                        opacity: this.state.gazed
                     }}>
                     {this.props.text}
-                </Text>}
+                </Text>
 
             </VrButton>
         )
