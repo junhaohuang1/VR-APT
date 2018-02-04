@@ -9,17 +9,17 @@
          "uri":"/projects/zhongshi/spot 1.jpg",
          "surroundings":[
              {
-                "text":"The Kitchen",
-                "rotationY": 20,
+                "text":"Gym",
+                "rotationY": 10,
                 "rotationZ":0,
-                "PhotoId":"2",
-                "factor":1
+                "PhotoId":"3",
+                "factor":0.6
              },
              {
                 "text":"Living Room",
                 "rotationY": -10,
                 "rotationZ":0,
-                "PhotoId":"3",
+                "PhotoId":"2",
                 "factor":0.7
              },
              {
@@ -39,14 +39,28 @@
          "surroundings":[
             {
                "text":"Dinning Room",
-               "rotationY": -60,
+               "rotationY": 170,
                "rotationZ":0,
-               "PhotoId":"1",
+               "PhotoId":"2",
                "factor":1
             },
             {
                "text":"Living Room",
-               "rotationY": 30,
+               "rotationY": -15,
+               "rotationZ":0,
+               "PhotoId":"2",
+               "factor":1
+            },
+            {
+               "text":"Vestibule",
+               "rotationY": -80,
+               "rotationZ":0,
+               "PhotoId":"1",
+               "factor":1
+            }, 
+            {
+               "text":"Gym",
+               "rotationY": 90,
                "rotationZ":0,
                "PhotoId":"3",
                "factor":1
@@ -67,18 +81,18 @@
          "uri":"/projects/zhongshi/spot 3.jpg",
          "surroundings":[
             {
-               "text":"Kitchen",
-               "rotationY": 60,
+               "text":"Living Room",
+               "rotationY": 13,
                "rotationZ":0,
                "PhotoId":"2",
-               "factor": 1
+               "factor": 0.8
             },
             {
-               "text":"Dinning Room",
-               "rotationY": 80,
-               "rotationZ":0,
+               "text":"Vestibule",
+               "rotationY": 8,
+               "rotationZ":-2,
                "PhotoId":"1",
-               "factor": 0.7
+               "factor": 0.6
             },
            
             {
