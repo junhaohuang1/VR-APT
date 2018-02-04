@@ -39,7 +39,8 @@ export default class FurniButton extends React.Component{
                         {translateY: this.props.translateZ}
                     ]
             }}
-                onClick = {this.handleClick.bind(this)}>
+                onClick = {this.handleClick.bind(this)}
+                onExit = {this.handleExit.bind(this)}>
                 <View
                     style = {{
                         flexDirection:'column',
@@ -49,8 +50,7 @@ export default class FurniButton extends React.Component{
                         borderColor:"white",
                         borderWidth: 0.01 * PPM,
                         opacity:this.state.gazed
-                    }}
-                    onExit = {this.handleExit.bind(this)}>
+                    }}>
                     <Text
                     style = {{
                         backgroundColor:'rgba(0,0,0,0)',
