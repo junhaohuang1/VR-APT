@@ -1,14 +1,17 @@
 import React from 'react';
 import {Animated, Image, Text, View, VrButton} from 'react-vr';
+const Easing = require('Easing')
 
 export default class RoomButton extends React.Component {
 
 
     constructor(props){
         super();
+
         this.handleClick = this.handleClick.bind(this)
         this.state = {
-            gazed: false
+            gazed: false,
+            transY: new Animated.Value(0)
         }
     }
 
@@ -22,10 +25,25 @@ export default class RoomButton extends React.Component {
         this.setState({gazed:false})
     }
 
+    handleAni(){
+        const PPM = this.props.pixelsPerMeter;
+        const factor = this.props.factor;
+        const Pactor = PPM * factor
+
+        Animated.timing(
+            this.state.transY,
+            {
+                toValue: 1 * Pactor,
+                easing:Easing.bounce
+            }
+        ).start();
+    }
+
     render(){
         const PPM = this.props.pixelsPerMeter;
         const factor = this.props.factor;
         const Pactor = PPM * factor
+
         return(
             <VrButton
                 style = {{
@@ -41,13 +59,16 @@ export default class RoomButton extends React.Component {
                 onClick = {() => {this.handleClick()}}
                 onEnter = {this.handleEnter.bind(this)}
                 onExit = {this.handleExit.bind(this)}>
-                <View
+                <Animated.View
                     style = {{
                         alignItems:'center',
                         justifyContent: 'center',
                         backgroundColor:'rgba(0,0,0,0)',
-                        
-                    }}>
+                        transform:[
+                            {translateY: this.state.transY}
+                        ]
+                    }}
+                    onEnter = {this.handleAni.bind(this)}>
                     <Image
                         style = {{
                             height: 0.6 * Pactor,
@@ -57,7 +78,7 @@ export default class RoomButton extends React.Component {
                             ]
                         }}
                         source = {{uri:"../static_assets/icon.png"}}/>
-                </View>
+                </Animated.View>
                 { this.state.gazed &&
                 <Text
                     style = {{
