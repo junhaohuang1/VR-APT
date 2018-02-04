@@ -23,7 +23,7 @@ const PPM = 1/(2 * Math.PI * 3) * MAX_TEXTURE_WIDTH;
 
 export default class Final_Project extends React.Component {
     static defaultProps = {
-      tourSource: 'Project_4.json',
+      tourSource: 'Project_3.json',
     };
 
     constructor(props) {
@@ -62,7 +62,7 @@ export default class Final_Project extends React.Component {
         const locationId = this.state.locationId;
         const panoPhoto = this.state.data.photos[locationId];
         const surroundings = (panoPhoto && panoPhoto.surroundings) || null;
-        const rotation = this.state.rotation + panoPhoto.rotationOffset;
+        const rotation =  panoPhoto.rotationOffset;
 
         return(
             <View style={{transform: [{rotateY: rotation}]}}>
