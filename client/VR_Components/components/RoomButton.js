@@ -79,8 +79,8 @@ export default class RoomButton extends React.Component {
                     onExit = {this.endAni.bind(this)}>
                     <Image
                         style = {{
-                            height: 0.6 * Pactor,
-                            width: 0.3 * Pactor,
+                            height: 0.7 * Pactor,
+                            width: 0.35 * Pactor,
                             transform: [
                                 {translateY: 0.15 * Pactor}
                             ]
