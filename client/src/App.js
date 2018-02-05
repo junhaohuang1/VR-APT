@@ -29,7 +29,6 @@ const App = () => {
           <Route exact path = '/signup' component = {SignUpPage}/>
           <Route exact path = '/login' component = {LoginPage}/>
           <Route exact path="/logout"  render={() => (<Redirect to="/"/>)}/>
-          <Footer />
           {/* <Footer /> */}
         </div>
     </Router>
