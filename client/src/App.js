@@ -30,9 +30,7 @@ const App = () => {
           <Route exact path = '/login' component = {LoginPage}/>
           <Route exact path="/logout"  render={() => (<Redirect to="/"/>)}/>
           <Footer />
-=======
           {/* <Footer /> */}
->>>>>>> carousel changes
         </div>
     </Router>
     </MuiThemeProvider>
