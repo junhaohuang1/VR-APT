@@ -10,7 +10,7 @@ import SignUpPage from './containers/SignUpPage.js';
 import NavBar from './containers/NavBar.js';
 import Auth from './Auth';
 import CarouselPage from './components/Carousel'
-// import Footer from './components/Footer'
+import Footer from './components/Footer'
 
 
 // remove tap delay, essential for MaterialUI to work properly
@@ -29,7 +29,7 @@ const App = () => {
           <Route exact path = '/signup' component = {SignUpPage}/>
           <Route exact path = '/login' component = {LoginPage}/>
           <Route exact path="/logout"  render={() => (<Redirect to="/"/>)}/>
-          {/* <Footer /> */}
+          <Footer className = 'footer'/>
         </div>
     </Router>
     </MuiThemeProvider>
