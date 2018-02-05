@@ -9,7 +9,8 @@ import {
 } from 'react-vr';
 // //import buttons
  import RoomButton from './components/RoomButton';
-// import FurniButton from './components/FurniButton';
+ import FurniButton from './components/FurniButton';
+ //import LoadingSpinner from './components/LoadingSpinner';
 
 import CylindricalPanel from 'CylindricalPanel';
 
@@ -23,7 +24,7 @@ const PPM = 1/(2 * Math.PI * 3) * MAX_TEXTURE_WIDTH;
 
 export default class Final_Project extends React.Component {
     static defaultProps = {
-      tourSource: 'Project_3.json',
+      tourSource: 'Project_1.json',
     };
 
     constructor(props) {
@@ -102,6 +103,17 @@ export default class Final_Project extends React.Component {
                                         translateX = {degreesToPixels(surrounding.rotationY)}
                                         translateZ = {degreesToPixels(surrounding.rotationZ)}
                                     />
+                                )
+                            }else{
+                                return(
+                                    <FurniButton
+                                        key = {surrounding.title}
+                                        pixelsPerMeter = {PPM}
+                                        title = {surrounding.title}
+                                        uri = {surrounding.uri}
+                                        text = {surrounding.text}
+                                        translateX = {degreesToPixels(surrounding.rotationY)}
+                                        translateZ = {degreesToPixels(surrounding.rotationZ)} />
                                 )
                             }
                         })}
