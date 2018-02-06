@@ -1,11 +1,25 @@
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory();
 export function registration(state = {}, action) {
   switch (action.type) {
     case "USERS_REGISTER_PENDING":
-      return { registering: true };
+      return {
+        ...state,
+        registering: true
+      };
     case "USERS_REGISTER_FULFILLED":
-      return {};
+    history.push("/login")
+      return {
+        ...state,
+        registered: true,
+        successMessage: action.payload.data.message
+      };
     case "USERS_REGISTER_REJECTED":
-      return {};
+      return {
+        ...state,
+        registered: false,
+        error: action.payload.response.data
+      };
     default:
       return state
   }
