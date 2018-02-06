@@ -30,7 +30,12 @@ const App = () => {
           <Route exact path = '/signup' component = {SignUpPage}/>
           <Route exact path = '/login' component = {LoginPage}/>
           <Route exact path="/logout"  render={() => (<Redirect to="/"/>)}/>
+<<<<<<< HEAD
           <Footer className = 'footer'/>
+=======
+          <Footer />
+          {/* <Footer /> */}
+>>>>>>> 187ddef6204b3a66884472c0e4934be8926dbe68
         </div>
     </Router>
     </MuiThemeProvider>

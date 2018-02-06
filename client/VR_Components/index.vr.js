@@ -14,7 +14,7 @@ import {
 import CylindricalPanel from 'CylindricalPanel';
 
 const MAX_TEXTURE_WIDTH = 4096;
-const MAX_TEXTURE_HEIGHT = 720;
+const MAX_TEXTURE_HEIGHT = 1000;
 
 //convert for rotation
 const degreesToPixels = degrees => (degrees / 360) * MAX_TEXTURE_WIDTH
@@ -23,7 +23,7 @@ const PPM = 1/(2 * Math.PI * 3) * MAX_TEXTURE_WIDTH;
 
 export default class Final_Project extends React.Component {
     static defaultProps = {
-      tourSource: 'tourOfTheChester.json',
+      tourSource: 'Project_3.json',
     };
 
     constructor(props) {
@@ -62,10 +62,10 @@ export default class Final_Project extends React.Component {
         const locationId = this.state.locationId;
         const panoPhoto = this.state.data.photos[locationId];
         const surroundings = (panoPhoto && panoPhoto.surroundings) || null;
-        const rotation = this.state.rotation;
+        const rotation =  this.state.rotation + panoPhoto.rotationOffset;
 
         return(
-            <View>
+            <View style={{transform: [{rotateY: rotation}]}}>
                 <Pano source = {asset(panoPhoto.uri)} />
                 <CylindricalPanel
                     layer = {{
@@ -100,6 +100,7 @@ export default class Final_Project extends React.Component {
                                         text = {surrounding.text}
                                         factor = {surrounding.factor}
                                         translateX = {degreesToPixels(surrounding.rotationY)}
+                                        translateZ = {degreesToPixels(surrounding.rotationZ)}
                                     />
                                 )
                             }
