@@ -1,6 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types'
-// import Auth from '../Auth';
 import LoginForm from '../components/LoginForm.js';
 import { userActions } from '../actions';
 import { connect } from 'react-redux';
@@ -47,14 +45,13 @@ class LoginPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const email = encodeURIComponent(this.state.user.email);
-    const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
+    const email = this.state.user.email;
+    const password = this.state.user.password;
     this.setState({
       submitted:true
     })
      if (email && password) {
-         this.props.login(formData);
+         this.props.login(email,password);
      }
   }
 
@@ -99,8 +96,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (user) => {
-      dispatch(userActions.login(user))
+    login: (email,password) => {
+      dispatch(userActions.login(email,password))
     }
   }
 }

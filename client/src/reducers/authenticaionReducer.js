@@ -1,22 +1,32 @@
-let user = JSON.parse(localStorage.getItem('user'));
+import Auth from "../Auth.js"
+let user = Auth.checkUserLoggedIn();
 const initialState = user ? { loggedIn: true, user } : {};
 
 export function authentication(state = initialState, action) {
   switch (action.type) {
     case "USERS_LOGIN_PENDING":
       return {
+        ...state,
         loggingIn: true,
-        user: action.user
       };
     case "USERS_LOGIN_FULFILLED":
-      return {
+      Auth.authenticateUser(action.payload.data.user)
+      return ({
+        ...state,
         loggedIn: true,
-        user: action.user
-      };
+        user: action.payload.data.user.userData,
+      }
+    );
     case "USERS_LOGIN_REJECTED":
-      return {};
+      return {
+        ...state,
+        loggedIn: false
+      };
     case "USERS_LOGOUT":
-      return {};
+      return {
+        ...state,
+        loggedIn: false
+      };
     default:
       return state
   }
