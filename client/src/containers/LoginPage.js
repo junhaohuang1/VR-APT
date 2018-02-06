@@ -1,7 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types'
-import Auth from '../Auth';
+// import PropTypes from 'prop-types'
+// import Auth from '../Auth';
 import LoginForm from '../components/LoginForm.js';
+import { userActions } from '../actions';
+import { connect } from 'react-redux';
 
 
 class LoginPage extends React.Component {
@@ -22,7 +24,8 @@ class LoginPage extends React.Component {
 
     // set the initial component state
     this.state = {
-      errors: {},
+      submitted: false,
+      errorMessage:{},
       successMessage,
       user: {
         email: '',
@@ -47,40 +50,12 @@ class LoginPage extends React.Component {
     const email = encodeURIComponent(this.state.user.email);
     const password = encodeURIComponent(this.state.user.password);
     const formData = `email=${email}&password=${password}`;
-
-    // create an AJAX request
-    const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/login');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        // success
-
-        // change the component-container state
-        this.setState({
-          errors: {}
-        });
-
-        // save the token
-        Auth.authenticateUser(xhr.response.token);
-
-
-        // change the current URL to /
-        window.location.href="/";
-      } else {
-        // failure
-
-        // change the component state
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
-
-        this.setState({
-          errors
-        });
-      }
-    });
-    xhr.send(formData);
+    this.setState({
+      submitted:true
+    })
+     if (email && password) {
+         this.props.login(formData);
+     }
   }
 
   /**
@@ -106,7 +81,7 @@ class LoginPage extends React.Component {
       <LoginForm
         onSubmit={this.processForm}
         onChange={this.changeUser}
-        errors={this.state.errors}
+        errors={this.state.errorMessage}
         successMessage={this.state.successMessage}
         user={this.state.user}
       />
@@ -115,8 +90,19 @@ class LoginPage extends React.Component {
 
 }
 
-LoginPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
+function mapStateToProps(state) {
+  return {
+    authenticated: state.loggingIn,
+    errorMessage: state.error
+  }
+}
 
-export default LoginPage;
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (user) => {
+      dispatch(userActions.login(user))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)
