@@ -12,19 +12,10 @@ class LoginPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    const storedMessage = localStorage.getItem('successMessage');
-    let successMessage = '';
-
-    if (storedMessage) {
-      successMessage = storedMessage;
-      localStorage.removeItem('successMessage');
-    }
-
     // set the initial component state
     this.state = {
-      submitted: false,
-      errorMessage:{},
-      successMessage,
+      error:{},
+      successMessage:"",
       user: {
         email: '',
         password: ''
@@ -47,9 +38,6 @@ class LoginPage extends React.Component {
     // create a string for an HTTP body message
     const email = this.state.user.email;
     const password = this.state.user.password;
-    this.setState({
-      submitted:true
-    })
      if (email && password) {
          this.props.login(email,password);
      }
@@ -78,7 +66,7 @@ class LoginPage extends React.Component {
       <LoginForm
         onSubmit={this.processForm}
         onChange={this.changeUser}
-        errors={this.state.errorMessage}
+        errors={this.state.error}
         successMessage={this.state.successMessage}
         user={this.state.user}
       />
@@ -89,8 +77,10 @@ class LoginPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.loggingIn,
-    errorMessage: state.error
+    loggingIn: state.loggingIn,
+    loggedIn: state.loggedIn,
+    error: state.error,
+    successMessage: state.successMessage
   }
 }
 

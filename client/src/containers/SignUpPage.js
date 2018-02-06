@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types'
 import SignUpForm from '../components/SignUpForm.js';
+import { userActions } from '../actions';
+import { connect } from 'react-redux';
 
 
 class SignUpPage extends React.Component {
@@ -35,42 +36,12 @@ class SignUpPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const name = encodeURIComponent(this.state.user.name);
-    const email = encodeURIComponent(this.state.user.email);
-    const password = encodeURIComponent(this.state.user.password);
-    const formData = `name=${name}&email=${email}&password=${password}`;
-
-    // create an AJAX request
-    const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/signup');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        // success
-
-        // change the component-container state
-        this.setState({
-          errors: {}
-        });
-
-        // set a message
-        localStorage.setItem('successMessage', xhr.response.message);
-
-        // make a redirect
-        window.location.href="/login";
-      } else {
-        // failure
-
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
-
-        this.setState({
-          errors
-        });
-      }
-    });
-    xhr.send(formData);
+    const name = this.state.user.name;
+    const email = this.state.user.email;
+    const password = this.state.user.password;
+    if (name && email && password) {
+        this.props.signup(name,email,password);
+    }
   }
 
   /**
@@ -103,9 +74,22 @@ class SignUpPage extends React.Component {
   }
 
 }
+function mapStateToProps(state) {
+  return {
+    registering: state.registering,
+    registered: state.registered,
+    error: state.error,
+    successMessage: state.successMessage
+  }
+}
 
-SignUpPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
-export default SignUpPage;
+const mapDispatchToProps = dispatch => {
+  return {
+    signup: (name,email,password) => {
+      dispatch(userActions.signup(name, email,password))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage)
