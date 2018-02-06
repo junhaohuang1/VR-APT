@@ -5,7 +5,7 @@ import {Footer} from 'react-materialize'
 export default () => {
 
 	return(
-<Footer copyrights="&copy 2015 Copyright Text"
+<Footer  copyrights="&copy 2015 Copyright Text"
 
 	links={
 		<ul>

@@ -26,6 +26,7 @@ const App = () => {
           <Route exact path = '/' component = {Auth.isUserAuthenticated()?
             CarouselPage : HomePage
           }/>
+          {/* <Route exact path = '/' component = {Launch}/> */}
           <Route exact path = '/signup' component = {SignUpPage}/>
           <Route exact path = '/login' component = {LoginPage}/>
           <Route exact path="/logout"  render={() => (<Redirect to="/"/>)}/>
