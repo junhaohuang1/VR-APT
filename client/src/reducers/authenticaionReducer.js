@@ -17,6 +17,7 @@ export function authentication(state = initialState, action) {
       return ({
         ...state,
         loggedIn: true,
+        loggingIn: false,
         user: action.payload.data.user.userData,
         successMessage: action.payload.data.message
       }
@@ -24,6 +25,7 @@ export function authentication(state = initialState, action) {
     case "USERS_LOGIN_REJECTED":
       return {
         ...state,
+        loggingIn: false,
         loggedIn: false,
         error: action.payload.response.data
       };
