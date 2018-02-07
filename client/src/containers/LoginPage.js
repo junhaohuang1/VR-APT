@@ -12,16 +12,6 @@ class LoginPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    // set the initial component state
-    this.state = {
-      error:{},
-      successMessage:"",
-      user: {
-        email: '',
-        password: ''
-      }
-    };
-
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
   }
@@ -36,8 +26,8 @@ class LoginPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const email = this.state.user.email;
-    const password = this.state.user.password;
+    const email = this.props.email;
+    const password = this.props.password;
      if (email && password) {
          this.props.login(email,password);
      }
@@ -49,13 +39,9 @@ class LoginPage extends React.Component {
    * @param {object} event - the JavaScript event object
    */
   changeUser(event) {
-    const field = event.target.name;
-    const user = this.state.user;
-    user[field] = event.target.value;
-
-    this.setState({
-      user
-    });
+    const name = event.target.name;
+    const value = event.target.value;
+    this.props.updateSignInForm(name,value);
   }
 
   /**
@@ -66,9 +52,10 @@ class LoginPage extends React.Component {
       <LoginForm
         onSubmit={this.processForm}
         onChange={this.changeUser}
-        errors={this.state.error}
-        successMessage={this.state.successMessage}
-        user={this.state.user}
+        errors={this.props.errors}
+        successMessage={this.props.successMessage}
+        email={this.props.email}
+        password={this.props.password}
       />
     );
   }
@@ -77,10 +64,12 @@ class LoginPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    loggingIn: state.loggingIn,
-    loggedIn: state.loggedIn,
-    error: state.error,
-    successMessage: state.successMessage
+    loggingIn: state.authentication.loggingIn,
+    loggedIn: state.authentication.loggedIn,
+    errors: state.authentication.errors,
+    successMessage: state.registration.successMessage,
+    email: state.authentication.email,
+    password: state.authentication.password,
   }
 }
 
@@ -88,6 +77,9 @@ const mapDispatchToProps = dispatch => {
   return {
     login: (email,password) => {
       dispatch(userActions.login(email,password))
+    },
+    updateSignInForm:(key, value) =>{
+      dispatch(userActions.updateSignInForm(key, value))
     }
   }
 }

@@ -1,6 +1,21 @@
 import axios from 'axios';
 import Auth from '../Auth.js'
 
+const updateSignInForm = (key, value) => (dispatch) => (
+  dispatch({
+      type: "SIGNIN_FORM_UPDATE_VALUE_FULFILLED",
+      key, value
+  })
+)
+
+const updateSignUPForm = (key, value) => (dispatch) => (
+  dispatch({
+      type: "SIGNUP_FORM_UPDATE_VALUE_FULFILLED",
+      key, value
+  })
+)
+
+
 const login = (email,password) => (dispatch) => (
   dispatch({
     type: "USERS_LOGIN",
@@ -31,5 +46,7 @@ const signup = (name, email,password) => (dispatch) => (
 export const userActions = {
     login,
     logout,
-    signup
+    signup,
+    updateSignInForm,
+    updateSignUPForm
 };

@@ -1,32 +1,42 @@
 import React from 'react';
-import Auth from '../Auth';
 import NavBarForm from '../components/NavBarForm.js';
-        // onClick={this.logout()}
+import { userActions } from '../actions';
+import { connect } from 'react-redux';
+        //
 class NavBar extends React.Component{
 
   constructor(props) {
     super(props);
-    // this.state = {isToggleOn: true};
+
 
     // This binding is necessary to make `this` work in the callback
-    this.logout = this.logout.bind(this);
+    this.logout = this.props.logout.bind(this);
   }
 
-  logout() {
-    Auth.deauthenticateUser();
-    // this.setState(prevState => ({
-    //   isToggleOn: !prevState.isToggleOn
-    // }));
-  }
 
   render() {
-    return (
-      <NavBarForm
-
+      return (
+        <NavBarForm
+        onClick={this.logout}
+        loggedIn={this.props.loggedIn}
       />
     )
   }
 
 }
 
-export default NavBar;
+function mapStateToProps(state) {
+  return {
+    loggedIn: state.authentication.loggedIn,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout:() =>{
+      dispatch(userActions.logout())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

@@ -1,15 +1,34 @@
 import Auth from "../Auth.js";
 import { createBrowserHistory } from 'history';
 let user = Auth.checkUserLoggedIn();
-const initialState = user ? { loggedIn: true, user } : {};
+const initialState = user ? ({
+  loggedIn: true,
+  errors:{},
+  successMessage:"",
+  email: '',
+  password: ''
+  }) :
+({
+  loggedIn: false,
+  errors:{},
+  successMessage:"",
+  email: '',
+  password: ''
+});
 const history = createBrowserHistory();
 
 export function authentication(state = initialState, action) {
   switch (action.type) {
+    case "SIGNIN_FORM_UPDATE_VALUE_FULFILLED":
+    return {
+      ...state,
+      [action.key]: action.value
+    };
     case "USERS_LOGIN_PENDING":
       return {
         ...state,
         loggingIn: true,
+        successMessage: "",
       };
     case "USERS_LOGIN_FULFILLED":
       Auth.authenticateUser(action.payload.data.user)
@@ -18,8 +37,10 @@ export function authentication(state = initialState, action) {
         ...state,
         loggedIn: true,
         loggingIn: false,
-        user: action.payload.data.user.userData,
-        successMessage: action.payload.data.message
+        userData: action.payload.data.user.userData,
+        errors:{},
+        email: '',
+        password: ''
       }
     );
     case "USERS_LOGIN_REJECTED":
@@ -27,7 +48,7 @@ export function authentication(state = initialState, action) {
         ...state,
         loggingIn: false,
         loggedIn: false,
-        error: action.payload.response.data
+        errors: action.payload.response.data
       };
     case "USERS_LOGOUT":
       return {
