@@ -1,11 +1,12 @@
 import React from 'react'
 import {Footer} from 'react-materialize'
+import "./styles.css"
 
-
-export default () => {
+const Foot = () => {
 
 	return(
-<Footer  copyrights="&copy 2015 Copyright Text"
+		<div>
+<Footer copyrights="&copy 2015 Copyright Text"
 
 	links={
 		<ul>
@@ -20,5 +21,11 @@ export default () => {
 		<h5 className="white-text">Footer Content</h5>
 		<p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
 </Footer>
+	
+	</div>
 	)
 }
+
+
+
+export default Foot
