@@ -12,15 +12,6 @@ class SignUpPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    // set the initial component state
-    this.state = {
-      errors: {},
-      user: {
-        email: '',
-        name: '',
-        password: ''
-      }
-    };
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
@@ -36,9 +27,9 @@ class SignUpPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const name = this.state.user.name;
-    const email = this.state.user.email;
-    const password = this.state.user.password;
+    const name = this.props.name;
+    const email = this.props.email;
+    const password = this.props.password;
     if (name && email && password) {
         this.props.signup(name,email,password);
     }
@@ -49,15 +40,11 @@ class SignUpPage extends React.Component {
    *
    * @param {object} event - the JavaScript event object
    */
-  changeUser(event) {
-    const field = event.target.name;
-    const user = this.state.user;
-    user[field] = event.target.value;
-
-    this.setState({
-      user
-    });
-  }
+   changeUser(event) {
+     const name = event.target.name;
+     const value = event.target.value;
+     this.props.updateSignUPForm(name,value);
+   }
 
   /**
    * Render the component.
@@ -67,8 +54,10 @@ class SignUpPage extends React.Component {
       <SignUpForm
         onSubmit={this.processForm}
         onChange={this.changeUser}
-        errors={this.state.errors}
-        user={this.state.user}
+        errors={this.props.errors}
+        email={this.props.email}
+        password={this.props.password}
+        name={this.props.name}
       />
     );
   }
@@ -76,10 +65,13 @@ class SignUpPage extends React.Component {
 }
 function mapStateToProps(state) {
   return {
-    registering: state.registering,
-    registered: state.registered,
-    error: state.error,
-    successMessage: state.successMessage
+    registering: state.registration.registering,
+    registered: state.registration.registered,
+    errors: state.registration.errors,
+    successMessage: state.registration.successMessage,
+    email: state.registration.email,
+    password: state.registration.password,
+    name: state.registration.name
   }
 }
 
@@ -88,6 +80,9 @@ const mapDispatchToProps = dispatch => {
   return {
     signup: (name,email,password) => {
       dispatch(userActions.signup(name, email,password))
+    },
+    updateSignUPForm:(key, value) =>{
+      dispatch(userActions.updateSignUPForm(key, value))
     }
   }
 }

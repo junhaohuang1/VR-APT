@@ -1,17 +1,24 @@
 class Auth {
 
+
+
+   /**
+    * Get a token value.
+    *
+    * @returns {string}
+    */
+
+  static checkUserLoggedIn(){
+    return JSON.parse(localStorage.getItem('user'))
+  }
+
   /**
    * Authenticate a user. Save a token string in Local Storage
    *
    * @param {string} user
    */
-
-  static checkUserLoggedIn(){
-    return localStorage.getItem('user');
-  }
-
   static authenticateUser(user) {
-    localStorage.setItem('user', user);
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   /**
@@ -31,15 +38,7 @@ class Auth {
     localStorage.removeItem('user');
   }
 
-  /**
-   * Get a token value.
-   *
-   * @returns {string}
-   */
 
-  static getToken() {
-    return localStorage.getItem('user');
-  }
 
 }
 

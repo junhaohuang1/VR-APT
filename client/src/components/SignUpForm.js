@@ -6,25 +6,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 
-const SignUpForm = ({
-  onSubmit,
-  onChange,
-  errors,
-  user,
-}) => (
+const SignUpForm = (props) => (
   <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
+    <form action="/" onSubmit={props.onSubmit}>
       <h2 className="card-heading">Sign Up</h2>
 
-      {errors.summary && <p className="error-message">{errors.summary}</p>}
+      {props.errors.message && <p className="error-message">{props.errors.message}</p>}
 
       <div className="field-line">
         <TextField
           floatingLabelText="Name"
           name="name"
-          errorText={errors.name}
-          onChange={onChange}
-          value={user.name}
+          errorText={props.errors.name}
+          onChange={props.onChange}
+          value={props.name}
         />
       </div>
 
@@ -32,9 +27,9 @@ const SignUpForm = ({
         <TextField
           floatingLabelText="Email"
           name="email"
-          errorText={errors.email}
-          onChange={onChange}
-          value={user.email}
+          errorText={props.errors.email}
+          onChange={props.onChange}
+          value={props.email}
         />
       </div>
 
@@ -43,9 +38,9 @@ const SignUpForm = ({
           floatingLabelText="Password"
           type="password"
           name="password"
-          onChange={onChange}
-          errorText={errors.password}
-          value={user.password}
+          onChange={props.onChange}
+          errorText={props.errors.password}
+          value={props.password}
         />
       </div>
 
@@ -62,7 +57,9 @@ SignUpForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default SignUpForm;
