@@ -1,5 +1,6 @@
-import { createBrowserHistory } from 'history';
-const history = createBrowserHistory();
+
+import { push } from 'react-router-redux';
+import {store} from "../store.js";
 const initialState = {
   name:"",
   email: '',
@@ -20,7 +21,7 @@ export function registration(state = initialState, action) {
         registering: true
       };
     case "USERS_REGISTER_FULFILLED":
-    history.push("/login")
+    store.dispatch(push('/login'))
       return {
         ...state,
         registered: true,

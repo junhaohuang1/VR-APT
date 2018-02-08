@@ -1,5 +1,7 @@
 import Auth from "../Auth.js";
-import { createBrowserHistory } from 'history';
+import {store} from "../store.js";
+import { push } from 'react-router-redux';
+
 let user = Auth.checkUserLoggedIn();
 const initialState = user ? ({
   loggedIn: true,
@@ -15,7 +17,6 @@ const initialState = user ? ({
   email: '',
   password: ''
 });
-const history = createBrowserHistory();
 
 export function authentication(state = initialState, action) {
   switch (action.type) {
@@ -32,7 +33,7 @@ export function authentication(state = initialState, action) {
       };
     case "USERS_LOGIN_FULFILLED":
       Auth.authenticateUser(action.payload.data.user)
-      history.push("/")
+      store.dispatch(push('/'))
       return ({
         ...state,
         loggedIn: true,
