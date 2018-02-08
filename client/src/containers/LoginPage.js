@@ -2,9 +2,10 @@ import React from 'react';
 import LoginForm from '../components/LoginForm.js';
 import { userActions } from '../actions';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import {store} from "../store.js";
 import {withRouter} from "react-router-dom";
-import createHistory from 'history/createBrowserHistory';
-const history = createHistory();
+
 
 
 class LoginPage extends React.Component {
@@ -52,7 +53,7 @@ class LoginPage extends React.Component {
    */
   render() {
     if(this.props.loggedIn){
-      this.props.history.push('/')
+      store.dispatch(push('/'))
     }
     return (
       <LoginForm

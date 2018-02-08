@@ -4,9 +4,7 @@ import { userActions } from '../actions';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import {store} from "../store.js";
-import createHistory from 'history/createBrowserHistory';
-import {withRouter} from "react-router-dom";
-const history = createHistory();
+// import {withRouter} from "react-router-dom";
 
 class SignUpPage extends React.Component {
 
@@ -19,6 +17,7 @@ class SignUpPage extends React.Component {
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
+    this.test = this.checkMeOut.bind(this);
   }
 
   /**
@@ -50,15 +49,21 @@ class SignUpPage extends React.Component {
      this.props.updateSignUPForm(name,value);
    }
 
+    checkMeOut = (event) => {
+      event.preventDefault();
+     return store.dispatch(push("checkMeOut"))
+   }
+
   /**
    * Render the component.
    */
   render() {
     if(this.props.registered){
-      this.props.history.push('/login')
+      store.dispatch(push("/login"))
     }
       return (
         <SignUpForm
+          test={this.test}
           onSubmit={this.processForm}
           onChange={this.changeUser}
           errors={this.props.errors}
@@ -95,4 +100,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUpPage))
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage)
