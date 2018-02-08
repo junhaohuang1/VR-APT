@@ -2,8 +2,11 @@ import React from 'react';
 import SignUpForm from '../components/SignUpForm.js';
 import { userActions } from '../actions';
 import { connect } from 'react-redux';
-
-
+import { push } from 'react-router-redux';
+import {store} from "../store.js";
+import createHistory from 'history/createBrowserHistory';
+import {withRouter} from "react-router-dom";
+const history = createHistory();
 
 class SignUpPage extends React.Component {
 
@@ -51,6 +54,9 @@ class SignUpPage extends React.Component {
    * Render the component.
    */
   render() {
+    if(this.props.registered){
+      this.props.history.push('/login')
+    }
       return (
         <SignUpForm
           onSubmit={this.processForm}
@@ -89,4 +95,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUpPage))

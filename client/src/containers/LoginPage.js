@@ -2,7 +2,9 @@ import React from 'react';
 import LoginForm from '../components/LoginForm.js';
 import { userActions } from '../actions';
 import { connect } from 'react-redux';
-// import { withRouter } from 'react-router';
+import {withRouter} from "react-router-dom";
+import createHistory from 'history/createBrowserHistory';
+const history = createHistory();
 
 
 class LoginPage extends React.Component {
@@ -49,6 +51,9 @@ class LoginPage extends React.Component {
    * Render the component.
    */
   render() {
+    if(this.props.loggedIn){
+      this.props.history.push('/')
+    }
     return (
       <LoginForm
         onSubmit={this.processForm}
@@ -85,4 +90,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginPage))
