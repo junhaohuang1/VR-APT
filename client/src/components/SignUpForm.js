@@ -11,7 +11,7 @@ const SignUpForm = (props) => (
     <form action="/" onSubmit={props.onSubmit}>
       <h2 className="card-heading">Sign Up</h2>
 
-      {props.errors.message && <p className="error-message">{props.errors.message}</p>}
+      {props.errorMessage && <p className="error-message">{props.errorMessage}</p>}
 
       <div className="field-line">
         <TextField

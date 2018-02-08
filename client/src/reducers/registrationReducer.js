@@ -7,6 +7,9 @@ const initialState = {
   password: '',
   errors:{},
   successMessage:"",
+  errorMessage:"",
+  emailError:"",
+  passwordError:"",
 }
 export function registration(state = initialState, action) {
   switch (action.type) {
@@ -21,23 +24,26 @@ export function registration(state = initialState, action) {
         registering: true
       };
     case "USERS_REGISTER_FULFILLED":
-    store.dispatch(push('/login'))
+      store.dispatch(push('/login'))
       return {
         ...state,
+        registering: false,
         registered: true,
         successMessage: action.payload.data.message,
         errors:{},
         name:"",
-        email: '',
-        password: '',
+        email: "",
+        password: "",
+        errorMessage:""
       };
     case "USERS_REGISTER_REJECTED":
       return {
         ...state,
         registering: false,
         registered: false,
-        errors: action.payload.response.data,
-        successMessage:""
+        errors: action.payload.response.data.errors,
+        successMessage:"",
+        errorMessage:action.payload.response.data.message
       };
     default:
       return state

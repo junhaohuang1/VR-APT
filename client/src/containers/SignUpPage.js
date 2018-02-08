@@ -4,6 +4,7 @@ import { userActions } from '../actions';
 import { connect } from 'react-redux';
 
 
+
 class SignUpPage extends React.Component {
 
   /**
@@ -50,16 +51,16 @@ class SignUpPage extends React.Component {
    * Render the component.
    */
   render() {
-    return (
-      <SignUpForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.props.errors}
-        email={this.props.email}
-        password={this.props.password}
-        name={this.props.name}
-      />
-    );
+      return (
+        <SignUpForm
+          onSubmit={this.processForm}
+          onChange={this.changeUser}
+          errors={this.props.errors}
+          email={this.props.email}
+          password={this.props.password}
+          name={this.props.name}
+        />
+      );
   }
 
 }
@@ -71,7 +72,8 @@ function mapStateToProps(state) {
     successMessage: state.registration.successMessage,
     email: state.registration.email,
     password: state.registration.password,
-    name: state.registration.name
+    name: state.registration.name,
+    errorMessage: state.registration.errorMessage
   }
 }
 

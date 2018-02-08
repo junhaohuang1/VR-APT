@@ -12,7 +12,7 @@ const LoginForm = (props) => (
       <h2 className="card-heading">Login</h2>
 
       {props.successMessage && <p className="success-message">{props.successMessage}</p>}
-      {props.errors.message && <p className="error-message">{props.errors.message}</p>}
+      {props.errorsMessage && <p className="error-message">{props.errorsMessage}</p>}
 
       <div className="field-line">
         <TextField
