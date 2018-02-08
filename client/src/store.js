@@ -6,6 +6,7 @@ import promiseMiddleware from 'redux-promise-middleware';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
 const history = createHistory();
+const middleware = routerMiddleware(history);
 const loggerMiddleware = createLogger();
 
 
@@ -15,6 +16,6 @@ export const store = createStore(
         thunkMiddleware,
         loggerMiddleware,
         promiseMiddleware(),
-        routerMiddleware(history)
+        middleware
     )
 );

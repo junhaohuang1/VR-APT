@@ -1,6 +1,4 @@
 
-import { push } from 'react-router-redux';
-import {store} from "../store.js";
 const initialState = {
   name:"",
   email: '',
@@ -24,7 +22,7 @@ export function registration(state = initialState, action) {
         registering: true
       };
     case "USERS_REGISTER_FULFILLED":
-      store.dispatch(push('/login'))
+
       return {
         ...state,
         registering: false,
