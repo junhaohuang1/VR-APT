@@ -2,6 +2,7 @@ import React from 'react';
 import LoginForm from '../components/LoginForm.js';
 import { userActions } from '../actions';
 import { connect } from 'react-redux';
+// import { withRouter } from 'react-router';
 
 
 class LoginPage extends React.Component {
