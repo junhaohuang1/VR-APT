@@ -1,6 +1,4 @@
 import Auth from "../Auth.js";
-import {store} from "../store.js";
-import { push } from 'react-router-redux';
 
 let user = Auth.checkUserLoggedIn();
 const initialState = user ? ({
@@ -33,7 +31,6 @@ export function authentication(state = initialState, action) {
       };
     case "USERS_LOGIN_FULFILLED":
       Auth.authenticateUser(action.payload.data.user)
-      store.dispatch(push('/'))
       return ({
         ...state,
         loggedIn: true,

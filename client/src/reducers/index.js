@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   authentication,
   registration,
   alert,
-  routing:routerReducer
+  router:routerReducer
 });
 
 export default rootReducer;
