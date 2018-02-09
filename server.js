@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 // Serve up static assets
 app.use(express.static("client/build"));
+app.use(express.static("client/VR_Components/vr"))
 // Add routes, both API and view
 // app.use(routes);
 
@@ -69,8 +70,12 @@ app.use('/api', authCheckMiddleware);
 // routes
 const authRoutes = require('./routes/auth');
 const apiRoutes = require('./routes/api/api');
+const vrRoutes = require('./routes/vr')
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
+app.use('/vr', vrRoutes)
+
+
 
 // Start the API server
 app.listen(PORT, function() {
