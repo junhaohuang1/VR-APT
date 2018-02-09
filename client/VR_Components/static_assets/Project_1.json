@@ -6,7 +6,7 @@
    "photos":{
       "1":{
          "rotationOffset": 0,
-         "uri":"/projects/industry image/spot 1.jpg",
+         "uri":"./projects/good/spot 1.jpg",
          "surroundings":[
              {
                 "text":"The Kitchen",
@@ -35,7 +35,7 @@
       },
       "2":{
          "rotationOffset": -25,
-         "uri":"/projects/industry image/spot 2.jpg",
+         "uri":"./projects/good/spot 2.jpg",
          "surroundings":[
             {
                "text":"Dinning Room",
@@ -55,7 +55,7 @@
       },
       "3":{
          "rotationOffset": -40,
-         "uri":"/projects/industry image/spot 3.jpg",
+         "uri":"./projects/good/spot 3.jpg",
          "surroundings":[
             {
                "text":"Kitchen",
