@@ -10,6 +10,7 @@ import SignUpPage from './containers/SignUpPage.js';
 import NavBar from './containers/NavBar.js';
 import Auth from './Auth';
 import CarouselPage from './components/Carousel'
+import DashboardPage from './containers/DashboardPage'
 // import Footer from './components/Footer'
 
 
