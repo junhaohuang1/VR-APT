@@ -82,7 +82,7 @@ export default class FurniButton extends React.Component{
                         marginTop:0.15 * PPM,
 
                     }}
-                    source = {{uri:"../static_assets/furniture.png"}}
+                    source = {require("../static_assets/furniture.png")}
                     onEnter = {this.handleEnter.bind(this)}/>
             </VrButton>
         )}

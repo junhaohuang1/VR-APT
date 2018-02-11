@@ -7,13 +7,17 @@ import {
   View,
   VrButton
 } from 'react-vr';
-// //import buttons
- import RoomButton from './components/RoomButton';
- import FurniButton from './components/FurniButton';
+import PropTypes from 'prop-types'
+import axios from "axios";
 
- //import router
- import Router from 'react-router/MemoryRouter';
- import { Redirect, Route } from 'react-router'
+//import buttons
+import RoomButton from './components/RoomButton';
+import FurniButton from './components/FurniButton';
+
+
+//import router
+import Router from 'react-router/MemoryRouter';
+import { Redirect, Route } from 'react-router'
 
 
 import CylindricalPanel from 'CylindricalPanel';
@@ -42,12 +46,22 @@ export default class Final_Project extends React.Component {
 
 // fetch data, should be changed into api call
     componentDidMount(){
-        fetch(asset(this.props.tourSource).uri)
-          .then(response => response.json())
-          .then(responseData => {
-            this.init(responseData);
-          })
-          .done();
+        axios.get("/scene")
+            .then(res => {
+                const newAddress = `Project_${res}.json`
+                fetch(asset(newAddress).uri)
+                .then(response => response.json())
+                .then(responseData => {
+                     this.init(responseData);
+                 })
+                .done();
+            })
+        // fetch(asset(this.props.tourSource).uri)
+        //   .then(response => response.json())
+        //   .then(responseData => {
+        //     this.init(responseData);
+        //   })
+        //   .done();
     }
 
     init(data){
@@ -70,77 +84,71 @@ export default class Final_Project extends React.Component {
         const rotation =  this.state.rotation + panoPhoto.rotationOffset;
 
         return(
-            <Router>
-                <View>
-                    <Route pattern = "/:id" render = {({params}) =>{
-                        return(
-                            <View style={{transform: [{rotateY: rotation}]}}>
-                                <Pano
-                                    onLoad = {()=> {
-                                        this.setState({
-                                            locationId: params.id
-                                        })
-                                    }}
-                                    source = {asset(this.state.data.photos[locationId].uri)} />
-                                <CylindricalPanel
-                                    layer = {{
-                                        width: MAX_TEXTURE_WIDTH,
-                                        height: MAX_TEXTURE_HEIGHT,
-                                        density: MAX_TEXTURE_WIDTH,
-                                        radius: 3,
-                                    }}
-                                    style = {{position: 'absolute'}}>
-                                    <View
-                                        style = {{
-                                            alignItems:'center',
-                                            justifyContent:'center',
-                                            width:MAX_TEXTURE_WIDTH,
-                                            height:MAX_TEXTURE_HEIGHT,
-                                        }}>
 
-                                        <View>
-                                        {surroundings &&
-                                        surroundings.map((surrounding, index)=>{
-                                            if(!surrounding.type){
-                                                return(
-                                                    <RoomButton
-                                                        key = {surrounding.PhotoId}
-                                                        onClike = {()=>{
-                                                            this.setState({
-                                                                locationId:surrounding.PhotoId
-                                                            })
-                                                            console.log(locationId)
-                                                        }}
-                                                        pixelsPerMeter = {PPM}
-                                                        text = {surrounding.text}
-                                                        factor = {surrounding.factor}
-                                                        translateX = {degreesToPixels(surrounding.rotationY)}
-                                                        translateZ = {degreesToPixels(surrounding.rotationZ)}
-                                                    />
-                                                )
-                                            }else{
-                                                return(
-                                                    <FurniButton
-                                                        key = {surrounding.title}
-                                                        pixelsPerMeter = {PPM}
-                                                        title = {surrounding.title}
-                                                        uri = {surrounding.uri}
-                                                        text = {surrounding.text}
-                                                        translateX = {degreesToPixels(surrounding.rotationY)}
-                                                        translateZ = {degreesToPixels(surrounding.rotationZ)} />
-                                                )
-                                            }
-                                        })}
-                                        </View>
-                                        </View>
+            <View style={{transform: [{rotateY: rotation}]}}>
+                <Pano
+                    onLoad = {()=> {
+                        this.setState({
+                            locationId: params.id
+                        })
+                    }}
+                    source = {asset(this.state.data.photos[locationId].uri)} />
+                <CylindricalPanel
+                    layer = {{
+                        width: MAX_TEXTURE_WIDTH,
+                        height: MAX_TEXTURE_HEIGHT,
+                        density: MAX_TEXTURE_WIDTH,
+                        radius: 3,
+                    }}
+                    style = {{position: 'absolute'}}>
+                    <View
+                        style = {{
+                            alignItems:'center',
+                            justifyContent:'center',
+                            width:MAX_TEXTURE_WIDTH,
+                            height:MAX_TEXTURE_HEIGHT,
+                        }}>
 
-                                </CylindricalPanel>
-                            </View>
-                        )
-                    }}/>
+                        <View>
+                        {surroundings &&
+                        surroundings.map((surrounding, index)=>{
+                            if(!surrounding.type){
+                                return(
+                                    <RoomButton
+                                        key = {surrounding.PhotoId}
+                                        onClike = {()=>{
+                                            this.setState({
+                                                locationId:surrounding.PhotoId
+                                            })
+                                            console.log(locationId)
+                                        }}
+                                        to = {'/{surrounding.PhotoId}'}
+                                        pixelsPerMeter = {PPM}
+                                        text = {surrounding.text}
+                                        factor = {surrounding.factor}
+                                        translateX = {degreesToPixels(surrounding.rotationY)}
+                                        translateZ = {degreesToPixels(surrounding.rotationZ)}
+                                    />
+                                )
+                            }else{
+                                return(
+                                    <FurniButton
+                                        key = {surrounding.title}
+                                        pixelsPerMeter = {PPM}
+                                        title = {surrounding.title}
+                                        uri = {surrounding.uri}
+                                        text = {surrounding.text}
+                                        translateX = {degreesToPixels(surrounding.rotationY)}
+                                        translateZ = {degreesToPixels(surrounding.rotationZ)} />
+                                )
+                            }
+                        })}
+                        </View>
+                        </View>
 
-                </View>
-            </Router>
+                </CylindricalPanel>
+            </View>
+
         )
     }
 

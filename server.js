@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 // Serve up static assets
 app.use(express.static("client/build"));
+app.use(express.static("client/VR_Components/vr/build"))
 //app.use(morgan())
 
 // Add routes, both API and view
@@ -73,9 +74,11 @@ app.use('/api', authCheckMiddleware);
 const authRoutes = require('./routes/auth');
 const apiRoutes = require('./routes/api/api');
 const vrRoutes = require('./routes/vr')
+const sceneRoutes = require('./routes/scene')
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/vr', vrRoutes)
+app.use('/scene', sceneRoutes)
 
 
 
