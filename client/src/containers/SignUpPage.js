@@ -4,7 +4,6 @@ import { userActions } from '../actions';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import {store} from "../store.js";
-// import {withRouter} from "react-router-dom";
 
 class SignUpPage extends React.Component {
 
@@ -17,7 +16,6 @@ class SignUpPage extends React.Component {
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
-    this.test = this.checkMeOut.bind(this);
   }
 
   /**
@@ -49,18 +47,14 @@ class SignUpPage extends React.Component {
      this.props.updateSignUPForm(name,value);
    }
 
-    checkMeOut = (event) => {
-      event.preventDefault();
-     return store.dispatch(push("checkMeOut"))
-   }
 
   /**
    * Render the component.
    */
   render() {
-    if(this.props.registered){
-      store.dispatch(push("/login"))
-    }
+      if(this.props.registered){
+        store.dispatch(push("/login"))
+      }
       return (
         <SignUpForm
           test={this.test}
