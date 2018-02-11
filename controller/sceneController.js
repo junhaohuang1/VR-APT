@@ -8,15 +8,21 @@ module.exports = {
           .catch(err => res.status(422).json(err))
     },
     update: function(req, res){
-        db.scene
-          .findOneAndUpdate({name:"scene"}, function(err, doc){
+        db.Scene
+          .find({name:"scene"}, function(err, doc){
               if(doc.length){
+                  console.log("here")
                   console.log(req.body)
-                  doc.number = req.body
-                  doc.save()
+                  console.log(doc)
+                  doc[0].number = req.body.id
+                  doc[0].save()
                   res.json("updated")
               }else{
-                  db.scene.create(req.body);
+                  const newScene = {
+                      name:"scene",
+                      number: req.body.id
+                  }
+                  db.Scene.create(newScene);
                   res.json("added")
               }
 

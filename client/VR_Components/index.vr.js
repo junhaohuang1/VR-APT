@@ -48,7 +48,8 @@ export default class Final_Project extends React.Component {
     componentDidMount(){
         axios.get("/scene")
             .then(res => {
-                const newAddress = `Project_${res}.json`
+                const newAddress = `Project_${res[0].number}.json`
+                console.log(newAddress)
                 fetch(asset(newAddress).uri)
                 .then(response => response.json())
                 .then(responseData => {

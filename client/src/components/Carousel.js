@@ -1,5 +1,5 @@
 import React from 'react'
-import {Carousel, Button} from 'react-materialize'
+import {Carousel} from 'react-materialize'
 import axios from "axios";
 
 const styles = {
@@ -17,7 +17,8 @@ export default class CarouselPage extends React.Component {
 
     handleClick = (e) => {
         console.log(e.target.id)
-        axios.put("/scene", e.target.id)
+        const data = {id: e.target.id}
+        axios.put("/scene", data)
     }
     render(){
         return(
@@ -25,7 +26,7 @@ export default class CarouselPage extends React.Component {
             <Carousel options = {{fullWidth: true}}>
                 <div className = "caroImg" style = {styles.img}>
                     <img src = "https://i.ytimg.com/vi/Rd3cG0-5qWY/maxresdefault.jpg" />
-                    <button className='btn' id = "1" onClick ={this.handleClick} style = {styles.button}>Launch</button>
+                    <button className='btn' id = "2" onClick ={this.handleClick} style = {styles.button}>Launch</button>
                 </div>
                 <div className = "caroImg" style = {styles.img}>
                     <img src = "https://upload.wikimedia.org/wikipedia/commons/b/bf/St_Patrick%27s_Cathedral_Choir_360x180%2C_Dublin%2C_Ireland.jpg" style = {styles.img}/>
@@ -40,7 +41,6 @@ export default class CarouselPage extends React.Component {
                     <button className='btn' id = "4" onClick ={this.handleClick} style = {styles.button}>Launch</button>
                 </div>
             </Carousel>
-
 
         )
      }
