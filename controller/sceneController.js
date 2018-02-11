@@ -6,11 +6,21 @@ module.exports = {
           .find({name:"scene"})
           .then(data => res.json(data))
           .catch(err => res.status(422).json(err))
-    }
+    },
     update: function(req, res){
         db.scene
-          .findOneAndUpdate({name:"scene"}, req.body)
-          .then(data => res.json(data))
-          .catch(err => res.status(422).json(err))
+          .findOneAndUpdate({name:"scene"}, function(err, doc){
+              if(doc.length){
+                  console.log(req.body)
+                  doc.number = req.body
+                  doc.save()
+                  res.json("updated")
+              }else{
+                  db.scene.create(req.body);
+                  res.json("added")
+              }
+
+          })
+
     }
 }
