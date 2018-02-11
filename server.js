@@ -5,6 +5,7 @@ const passport = require('passport');
 const User = require('./models/user');
 const jwt = require('jsonwebtoken');
 const app = express();
+const morgan = require('morgan');
 const PORT = process.env.PORT || 3001;
 const jwtSecret = "a secret phrase!!";
 
@@ -15,7 +16,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 // Serve up static assets
 app.use(express.static("client/build"));
-app.use(express.static("client/VR_Components/vr"))
+//app.use(morgan())
+
 // Add routes, both API and view
 // app.use(routes);
 
