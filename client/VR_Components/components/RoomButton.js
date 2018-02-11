@@ -1,11 +1,16 @@
 import React from 'react';
 import {Animated, Image, Text, View, VrButton} from 'react-vr';
+import PropTypes from 'prop-types'
+
 const Easing = require('Easing')
 
 export default class RoomButton extends React.Component {
+    static contextTypes = {
+       router: PropTypes.object.isRequired
+   };
 
-    constructor(props){
-        super();
+    constructor(props,context){
+        super(props,context);
 
         this.handleClick = this.handleClick.bind(this)
         this.state = {
@@ -16,7 +21,11 @@ export default class RoomButton extends React.Component {
         }
     }
 
-    handleClick(){this.props.onClike()}
+    handleClick(){
+        //console.log(this.context)
+        this.props.onClike()
+        //this.context.router.history.push(this.props.to)
+    }
 
     handleEnter(){
         this.setState({gazed: 1})

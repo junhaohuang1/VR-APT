@@ -16,6 +16,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 // Serve up static assets
 app.use(express.static("client/build"));
+app.use(express.static("client/public"));
+app.use(express.static("client/VR_Components/vr/build"))
 //app.use(morgan())
 
 // Add routes, both API and view
@@ -24,7 +26,7 @@ app.use(express.static("client/build"));
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userDataBase")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/userDataBase")
   .then(() => console.log('connection succesful'))
   .catch((err) => console.error(err));
 
@@ -73,9 +75,11 @@ app.use('/api', authCheckMiddleware);
 const authRoutes = require('./routes/auth');
 const apiRoutes = require('./routes/api/api');
 const vrRoutes = require('./routes/vr')
+const sceneRoutes = require('./routes/scene')
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/vr', vrRoutes)
+app.use('/scene', sceneRoutes)
 
 
 
