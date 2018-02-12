@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 // Serve up static assets
-app.use(express.static("client/public"));
+app.use(express.static("client/build"));
 app.use(express.static("client/VR_Components/vr/build"))
 //app.use(morgan())
 
