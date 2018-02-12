@@ -7,10 +7,9 @@ import 'materialize-css'
 // 	console.log('hello',this)
 // }
 
-export default class Cards extends React.Component{
-	render(){
-		return (
-			<div>
+const Cards = () => {
+	return(
+	<div>
 <Card 
 	header={<CardTitle image='https://i.ytimg.com/vi/Rd3cG0-5qWY/maxresdefault.jpg'>Card Title</CardTitle>}
 	actions={[<a href='asdf'>This is a Link</a>]}>
@@ -28,6 +27,8 @@ export default class Cards extends React.Component{
 	actions={[<a href='asdf'>This is a Link</a>]}>
 	I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
 </Card>
-</div>)
-	}}
-// 
+</div>
+	)
+}
+
+export default Cards

@@ -9,7 +9,7 @@ import HomePage from './containers/HomePage.js';
 import SignUpPage from './containers/SignUpPage.js';
 import NavBar from './containers/NavBar.js';
 import Auth from './Auth';
-import CarouselPage from './components/Carousel'
+import CardPage from './containers/CardPage'
 import Footer from './components/Footer'
 
 
@@ -24,7 +24,7 @@ const App = () => {
         <div>
           <NavBar/>
           <Route exact path = '/' component = {Auth.isUserAuthenticated()?
-            CarouselPage : HomePage
+            CardPage : HomePage
           }/>
           {/* <Route exact path = '/' component = {Launch}/> */}
           <Route exact path = '/signup' component = {SignUpPage}/>
