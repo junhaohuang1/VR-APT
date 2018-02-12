@@ -36,7 +36,9 @@ export default class CarouselPage extends React.Component {
 
         const data = {id: e.target.id}
         axios.put("/scene", data)
+        //const current = window.location.href
         //window.location.href = '/vr/test'
+        window.open('/vr/test','_blank')
     }
     render(){
         return(
