@@ -19,23 +19,24 @@ export default class CarouselPage extends React.Component {
     handleClick = (e) => {
         console.log(e.target.id)
         //open another website for different scene
-        switch (e.target.id){
-            case '1':
-                window.open('https://murmuring-hamlet-56587.herokuapp.com/home.html','_blank')
-                break;
-            case '2':
-                window.open('https://radiant-caverns-54355.herokuapp.com/home.html','_blank')
-                break;
-            case '3':
-                window.open('https://radiant-bayou-34137.herokuapp.com/home.html','_blank')
-                break;
-            case '4':
-                window.open('https://blooming-badlands-89901.herokuapp.com/home.html','_blank')
-                break;
-        }
+        // switch (e.target.id){
+        //     case '1':
+        //         window.open('https://murmuring-hamlet-56587.herokuapp.com/home.html','_blank')
+        //         break;
+        //     case '2':
+        //         window.open('https://radiant-caverns-54355.herokuapp.com/home.html','_blank')
+        //         break;
+        //     case '3':
+        //         window.open('https://radiant-bayou-34137.herokuapp.com/home.html','_blank')
+        //         break;
+        //     case '4':
+        //         window.open('https://blooming-badlands-89901.herokuapp.com/home.html','_blank')
+        //         break;
+        // }
 
         const data = {id: e.target.id}
         axios.put("/scene", data)
+        //window.location.href = '/vr/test'
     }
     render(){
         return(

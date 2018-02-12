@@ -5,12 +5,10 @@ import PropTypes from 'prop-types'
 const Easing = require('Easing')
 
 export default class RoomButton extends React.Component {
-    static contextTypes = {
-       router: PropTypes.object.isRequired
-   };
 
-    constructor(props,context){
-        super(props,context);
+
+    constructor(props){
+        super(props);
 
         this.handleClick = this.handleClick.bind(this)
         this.state = {

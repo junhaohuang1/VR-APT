@@ -31,9 +31,6 @@ const degreesToPixels = degrees => (degrees / 360) * MAX_TEXTURE_WIDTH
 const PPM = 1/(2 * Math.PI * 3) * MAX_TEXTURE_WIDTH;
 
 export default class Final_Project extends React.Component {
-    static defaultProps = {
-      tourSource: 'Project_1.json',
-    };
 
     constructor(props) {
       super(props);
@@ -46,23 +43,14 @@ export default class Final_Project extends React.Component {
 
 // fetch data, should be changed into api call
     componentDidMount(){
-        axios.get("/scene")
-            .then(res => {
-                const newAddress = `Project_${res[0].number}.json`
-                console.log(newAddress)
-                fetch(asset(newAddress).uri)
-                .then(response => response.json())
-                .then(responseData => {
-                     this.init(responseData);
-                 })
-                .done();
-            })
-        // fetch(asset(this.props.tourSource).uri)
-        //   .then(response => response.json())
-        //   .then(responseData => {
-        //     this.init(responseData);
-        //   })
-        //   .done();
+        const source = this.props.file
+        console.log(source)
+        fetch(asset(source).uri)
+          .then(response => response.json())
+          .then(responseData => {
+            this.init(responseData);
+          })
+          .done();
     }
 
     init(data){
@@ -86,13 +74,8 @@ export default class Final_Project extends React.Component {
 
         return(
 
-            <View style={{transform: [{rotateY: rotation}]}}>
+            <View style={{transform: [{rotateY:0}]}}>
                 <Pano
-                    onLoad = {()=> {
-                        this.setState({
-                            locationId: params.id
-                        })
-                    }}
                     source = {asset(this.state.data.photos[locationId].uri)} />
                 <CylindricalPanel
                     layer = {{

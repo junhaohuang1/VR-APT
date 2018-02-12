@@ -5,7 +5,7 @@
 
    "photos":{
       "1":{
-         "rotationOffset": 0,
+         "rotationOffset": 190,
          "uri":"/projects/zhongshi/spot 1.jpg",
          "surroundings":[
              {
@@ -59,7 +59,7 @@
          ]
       },
       "3":{
-         "rotationOffset": 60,
+         "rotationOffset": 180,
          "uri":"/projects/zhongshi/spot 3.jpg",
          "surroundings":[
             {
