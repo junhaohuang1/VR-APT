@@ -8,11 +8,10 @@ const updateNoteInput = (key, value) => (dispatch) => (
 )
 
 //get method for submitting notes
-const getNote = (id) => (dispatch) => (
+const getNote = () => (dispatch) => (
   dispatch({
     type: "GET_NOTE",
-    payload: axios.get('/image/', {
-      id:id
+    payload: axios.get('/image/:id', {
     })
   })
 );

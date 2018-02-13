@@ -25,7 +25,7 @@ const updateModalInput = (key, value) => (dispatch) => (
 const uploadImageLink = (URL) => (dispatch) => (
   dispatch({
     type: "UPLOAD_IMAGE",
-    payload: axios.post('/api/imagelink', {
+    payload: axios.post('/image', {
       URL: URL,
     })
   })

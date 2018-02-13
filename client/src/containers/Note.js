@@ -47,7 +47,7 @@ class Note extends React.Component {
 function mapStateToProps(state) {
   return {
     username: state.authentication.username,
-    notes: state.comment.comment
+    notes: state.carousel.images.comment
   }
 }
 

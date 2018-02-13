@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const sceneSchema = new Schema({
-    name: {type:String, unique:true},
     number: {type: Number},
+    name: {type:String, unique:true},
+    url:{type:String, unique:true},
     note: [{
       type: Schema.Types.ObjectId,
       ref: "Note"
