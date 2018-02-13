@@ -10,6 +10,8 @@ router.route("/")
 
 // router.get("/", function(err,res){sceneController.findAll})
 // router.put("/", sceneController.update)
+
+
 router.post("/scene/:id", function(req, res) {
   var newNote = new Note(req.body);
   newNote.save(function(error, data) {

@@ -4,7 +4,7 @@ module.exports = {
     findAll: function(req, res){
         db.Scene
           .find({name:"scene"})
-          .populate("note")
+         // .populate("note")
           .then(data => res.json(data))
           .catch(err => res.status(400).json(err))
     },
