@@ -62,6 +62,11 @@ export default class Final_Project extends React.Component {
 
     }
 
+    changeColor(newdata){
+        console.log("werwe")
+        this.setState({locationId: newdata})
+    }
+
     render(){
         if(!this.state.data){
             return null;
@@ -122,6 +127,7 @@ export default class Final_Project extends React.Component {
                                         title = {surrounding.title}
                                         uri = {surrounding.uri}
                                         text = {surrounding.text}
+                                        changeColor = {this.changeColor.bind(this)}
                                         translateX = {degreesToPixels(surrounding.rotationY)}
                                         translateZ = {degreesToPixels(surrounding.rotationZ)} />
                                 )

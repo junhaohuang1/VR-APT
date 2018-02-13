@@ -22,6 +22,23 @@ export default class FurniButton extends React.Component{
         NativeModules.LinkingManager.openURL(this.props.uri)
     }
 
+    colorChange(e){
+        const clicked = e.target
+        console.log(clicked)
+        switch (clicked){
+            case 52:
+                this.props.changeColor(4)
+            break;
+            case 53:
+                this.props.changeColor(5)
+            break;
+            case 54:
+                this.props.changeColor(6)
+            break
+        }
+
+    }
+
     render(){
         const PPM = this.props.pixelsPerMeter;
         const factor = this.props.factor;
@@ -39,9 +56,9 @@ export default class FurniButton extends React.Component{
                         {translateY: this.props.translateZ}
                     ]
             }}
-                onClick = {this.handleClick.bind(this)}
+
                 onExit = {this.handleExit.bind(this)}>
-                <View
+                <VrButton
                     style = {{
                         flexDirection:'column',
                         alignItems:'flex-start',
@@ -50,7 +67,8 @@ export default class FurniButton extends React.Component{
                         borderColor:"white",
                         borderWidth: 0.01 * PPM,
                         opacity:this.state.gazed
-                    }}>
+                    }}
+                    onClick = {this.handleClick.bind(this)}>
                     <Text
                     style = {{
                         backgroundColor:'rgba(0,0,0,0)',
@@ -60,7 +78,8 @@ export default class FurniButton extends React.Component{
                         textAlign:'center',
                         textAlignVertical:'auto',
                         opacity: 2
-                    }}>
+                    }}
+                    >
                         {this.props.title}
                     </Text>
                     <Text
@@ -71,10 +90,11 @@ export default class FurniButton extends React.Component{
                             textAlign:'center',
                             textAlignVertical:'auto',
                             opacity:2
-                        }}>
+                        }}
+                        >
                         {this.props.text}
                     </Text>
-                </View>
+                </VrButton>
                 <View
                     style = {{
                         flexDirection:'row',
@@ -94,25 +114,30 @@ export default class FurniButton extends React.Component{
                             height: 0.1 * PPM,
                             width: 0.1 * PPM,
                             borderRadius: 0.05 * PPM,
-                            marginTop: 0.1 * PPM
-
-                        }}/>
+                            marginTop: 0.1 * PPM,
+                            marginRight: 0.05 * PPM
+                        }}
+                            onClick = {this.colorChange.bind(this)}/>
                         <VrButton style = {{
                             backgroundColor:'red',
                             height: 0.1 * PPM,
                             width: 0.1 * PPM,
                             borderRadius: 0.05 * PPM,
-                            marginTop: 0.05 * PPM
+                            marginTop: 0.05 * PPM,
+                            marginRight: 0.05 * PPM
 
-                        }}/>
+                        }}
+                            onClick = {this.colorChange.bind(this)}/>
                         <VrButton style = {{
                             backgroundColor:'yellow',
                             height: 0.1 * PPM,
                             width: 0.1 * PPM,
                             borderRadius: 0.05 * PPM,
-                            marginTop: 0.05 * PPM
+                            marginTop: 0.05 * PPM,
+                            marginRight: 0.05 * PPM
 
-                        }}/>
+                        }}
+                         onClick = {this.colorChange.bind(this)}/>
 
                     </View>
                     <Image
