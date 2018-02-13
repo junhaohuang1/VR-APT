@@ -17,7 +17,7 @@ const SignUpForm = (props) => (
         <TextField
           floatingLabelText="Name"
           name="name"
-          errorText={props.errors.name}
+          errorText={props.errors.name ? (props.errors.name) : ("")}
           onChange={props.onChange}
           value={props.name}
         />
@@ -27,7 +27,7 @@ const SignUpForm = (props) => (
         <TextField
           floatingLabelText="Email"
           name="email"
-          errorText={props.errors.email}
+          errorText={props.errors.email ?(props.errors.email):("")}
           onChange={props.onChange}
           value={props.email}
         />
@@ -39,7 +39,7 @@ const SignUpForm = (props) => (
           type="password"
           name="password"
           onChange={props.onChange}
-          errorText={props.errors.password}
+          errorText={props.errors.password ?(props.errors.password) :("")}
           value={props.password}
         />
       </div>
