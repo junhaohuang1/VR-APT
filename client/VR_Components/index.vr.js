@@ -8,7 +8,7 @@ import {
   VrButton
 } from 'react-vr';
 import PropTypes from 'prop-types'
-import axios from "axios";
+
 
 //import buttons
 import RoomButton from './components/RoomButton';

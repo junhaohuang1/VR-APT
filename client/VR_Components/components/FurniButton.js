@@ -64,26 +64,67 @@ export default class FurniButton extends React.Component{
                         {this.props.title}
                     </Text>
                     <Text
-                    style = {{
-                        backgroundColor:'rgba(0,0,0,0)',
-                        color:'white',
-                        fontSize:16,
-                        textAlign:'center',
-                        textAlignVertical:'auto',
-                        opacity:2
-                    }}>
+                        style = {{
+                            backgroundColor:'rgba(0,0,0,0)',
+                            color:'white',
+                            fontSize:16,
+                            textAlign:'center',
+                            textAlignVertical:'auto',
+                            opacity:2
+                        }}>
                         {this.props.text}
                     </Text>
                 </View>
-                <Image
+                <View
                     style = {{
-                        height: 0.3* PPM,
-                        width: 0.3 * PPM,
-                        marginTop:0.15 * PPM,
+                        flexDirection:'row',
+                    }}>
+                    <View
+                        style = {{
+                            flexDirection:'column',
+                            alignItems:'flex-start',
+                            backgroundColor:'rgba(0,0,0,0)',
+                            opacity:this.state.gazed,
+                            height: 0.5 * PPM,
+                            width: 0.1 * PPM,
 
-                    }}
-                    source = {require("../static_assets/furniture.png")}
-                    onEnter = {this.handleEnter.bind(this)}/>
+                        }}>
+                        <VrButton style = {{
+                            backgroundColor:'blue',
+                            height: 0.1 * PPM,
+                            width: 0.1 * PPM,
+                            borderRadius: 0.05 * PPM,
+                            marginTop: 0.1 * PPM
+
+                        }}/>
+                        <VrButton style = {{
+                            backgroundColor:'red',
+                            height: 0.1 * PPM,
+                            width: 0.1 * PPM,
+                            borderRadius: 0.05 * PPM,
+                            marginTop: 0.05 * PPM
+
+                        }}/>
+                        <VrButton style = {{
+                            backgroundColor:'yellow',
+                            height: 0.1 * PPM,
+                            width: 0.1 * PPM,
+                            borderRadius: 0.05 * PPM,
+                            marginTop: 0.05 * PPM
+
+                        }}/>
+
+                    </View>
+                    <Image
+                        style = {{
+                            height: 0.3* PPM,
+                            width: 0.3 * PPM,
+                            marginTop:0.15 * PPM,
+
+                        }}
+                        source = {require("../static_assets/furniture.png")}
+                        onEnter = {this.handleEnter.bind(this)}/>
+                </View>
             </VrButton>
         )}
 }
