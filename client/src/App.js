@@ -9,7 +9,7 @@ import LoginPage from './containers/LoginPage.js';
 import HomePage from './containers/HomePage.js';
 import SignUpPage from './containers/SignUpPage.js';
 import NavBar from './containers/NavBar.js';
-import CarouselPage from './components/Carousel';
+import CarouselPage from './containers/CarouselPage';
 
 
 // remove tap delay, essential for MaterialUI to work properly

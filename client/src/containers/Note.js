@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { noteActions } from '../actions';
 import NoteListForm from '../components/NoteListForm.js';
+import NoteItem from "../components/NoteItem.js";
 
 class Note extends React.Component {
   constructor(props, context) {
@@ -21,33 +22,34 @@ class Note extends React.Component {
     this.props.uploadComment(this.props.src, this.props.username)
   }s
   render() {
-    return (
 
-      {!this.props.notes.length ? (
-        <h1 className="text-center">No Comments to Display</h1>
-      ) : (
-        <NoteListForm>
-        {this.props.notes.map(note =>{
-          return(
-          <NoteItem
-            body={comment.body}
-            author={comment.username}
-            />
-          );
-          })}
-        onChange = {this.onChange}
-        onSubmit = {this.onSubmit}
-        </NoteListForm>
+      if(!this.props.notes.length){
+        return(
+          <h1 className="text-center">No Comments to Display</h1>
+        )
+      } else {
+        return(
+          <NoteListForm>
+            {this.props.notes.map(note =>{
+              return(
+              <NoteItem
+                body={note.body}
+                author={note.username}
+                />
+              );
+              })}
+            onChange = {this.onChange}
+            onSubmit = {this.onSubmit}
+          </NoteListForm>
       )
-      />
-    );
+    }
   }
 }
 
 function mapStateToProps(state) {
   return {
     username: state.authentication.username,
-    notes: state.carousel.images.comment
+    notes: state.comment.images.notes
   }
 }
 

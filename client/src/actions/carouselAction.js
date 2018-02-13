@@ -7,3 +7,7 @@ const getImages = () => (dispatch) => (
     })
   })
 );
+
+export const carouselActions = {
+    getImages
+};

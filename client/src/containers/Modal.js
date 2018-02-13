@@ -44,8 +44,9 @@ class NavBarModal extends React.Component {
     this.props.updateModalInput(name,value);
   }
 
-  onSubmit(){
-    this.props.uploadImageLink(this.props.src)
+  onSubmit(e){
+    e.preventDefault();
+    this.props.uploadImageLink(this.props.src);
   }
 
   render() {

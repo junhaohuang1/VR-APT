@@ -15,9 +15,11 @@ const styles = {
 
 const CarouselImage = (props) => {
   <div className = "caroImg" style = {styles.img}>
-      <img src = {props.src} />
+      <img src = {props.src} alt=""/>
       <button className='btn' id = "1" onClick ={props.handleClick} style = {styles.button}>Launch</button>
   </div>
 
 
 }
+
+export default CarouselImage;

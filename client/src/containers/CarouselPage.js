@@ -1,9 +1,10 @@
 import React from 'react'
-import {Carousel} from 'react-materialize'
 import axios from "axios";
 import {carouselActions} from "../actions";
 import CarouselListForm from "../components/CarouselListForm";
 import CarouselImage from "../components/CarouselImage";
+import Note from "./Note";
+import { connect } from 'react-redux';
 
 
 class CarouselPage extends React.Component {
@@ -41,35 +42,34 @@ class CarouselPage extends React.Component {
 
 
     componentWillMount(){
-      this.props.getImages().
+      this.props.getImages()
     }
 
+  render(){
 
-
-
-    render(){
-        return(
-          {!this.props.images.length ? (
-            <h1 className="text-center">No Pictures to Display</h1>
-          ) : (
-                <CarouselListForm>
-                {this.props.images.map(image =>{
-                  return(
-                  <CarouselImage
-                    key={image.id}
-                    src={image.url}
-                    onClick={this.props.onClick}
-                    />
-                  );
-                  })}
-                </CarouselImage>
-              )
-              />
-            );
-          }
-          <CarouselListForm>
+      if(!this.props.images.length){
+        return (
+        <h1 className="text-center">No Pictures to Display</h1>
         )
-     }
+      } else {
+        return(
+          <div>
+            <CarouselListForm>
+            {this.props.images.map(image => {
+              return (
+                <CarouselImage
+                  key={image.id}
+                  src={image.url}
+                  onClick={this.props.onClick}
+                />
+              );
+            })}
+            </CarouselListForm>
+            <Note/>
+          </div>
+        )
+      }
+  }
 }
 
 function mapStateToProps(state) {

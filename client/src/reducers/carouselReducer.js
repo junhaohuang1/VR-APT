@@ -25,7 +25,7 @@ export function carousel (state = initialState, action){
     return {
       ...state,
       fetching: false,
-      errorMessage : action.payload.reponse.data.message
+      // errorMessage : action.payload.reponse.data.message
     }
     default:
     return state
