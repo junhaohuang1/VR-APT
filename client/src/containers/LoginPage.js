@@ -1,7 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types'
-import Auth from '../Auth';
 import LoginForm from '../components/LoginForm.js';
+import { userActions } from '../actions';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import {store} from "../store.js";
+import {withRouter} from "react-router-dom";
+
 
 
 class LoginPage extends React.Component {
@@ -11,24 +15,6 @@ class LoginPage extends React.Component {
    */
   constructor(props, context) {
     super(props, context);
-
-    const storedMessage = localStorage.getItem('successMessage');
-    let successMessage = '';
-
-    if (storedMessage) {
-      successMessage = storedMessage;
-      localStorage.removeItem('successMessage');
-    }
-
-    // set the initial component state
-    this.state = {
-      errors: {},
-      successMessage,
-      user: {
-        email: '',
-        password: ''
-      }
-    };
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
@@ -44,43 +30,11 @@ class LoginPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const email = encodeURIComponent(this.state.user.email);
-    const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
-
-    // create an AJAX request
-    const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/login');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        // success
-
-        // change the component-container state
-        this.setState({
-          errors: {}
-        });
-
-        // save the token
-        Auth.authenticateUser(xhr.response.token);
-
-
-        // change the current URL to /
-        window.location.href="/";
-      } else {
-        // failure
-
-        // change the component state
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
-
-        this.setState({
-          errors
-        });
-      }
-    });
-    xhr.send(formData);
+    const email = this.props.email;
+    const password = this.props.password;
+     if (email && password) {
+         this.props.login(email,password);
+     }
   }
 
   /**
@@ -89,34 +43,52 @@ class LoginPage extends React.Component {
    * @param {object} event - the JavaScript event object
    */
   changeUser(event) {
-    const field = event.target.name;
-    const user = this.state.user;
-    user[field] = event.target.value;
-
-    this.setState({
-      user
-    });
+    const name = event.target.name;
+    const value = event.target.value;
+    this.props.updateSignInForm(name,value);
   }
 
   /**
    * Render the component.
    */
   render() {
+    if(this.props.loggedIn){
+      store.dispatch(push('/'))
+    }
     return (
       <LoginForm
         onSubmit={this.processForm}
         onChange={this.changeUser}
-        errors={this.state.errors}
-        successMessage={this.state.successMessage}
-        user={this.state.user}
+        errors={this.props.errors}
+        successMessage={this.props.successMessage}
+        email={this.props.email}
+        password={this.props.password}
       />
     );
   }
 
 }
 
-LoginPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
+function mapStateToProps(state) {
+  return {
+    loggingIn: state.authentication.loggingIn,
+    loggedIn: state.authentication.loggedIn,
+    errors: state.authentication.errors,
+    successMessage: state.registration.successMessage,
+    email: state.authentication.email,
+    password: state.authentication.password,
+  }
+}
 
-export default LoginPage;
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (email,password) => {
+      dispatch(userActions.login(email,password))
+    },
+    updateSignInForm:(key, value) =>{
+      dispatch(userActions.updateSignInForm(key, value))
+    }
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginPage))

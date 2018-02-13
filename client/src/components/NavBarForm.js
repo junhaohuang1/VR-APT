@@ -1,16 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Auth from '../Auth';
-//onClick={props.logout()}
 
-const NavBarForm = props => (
+
+const NavBarForm = (props) => {
+console.log("NavBarForm props", props)
+  return (
   <nav className="navbar navbar-default">
     <div className="navbar-header">
-        <a className="navbar-brand" href="/">React App</a>
-      {Auth.isUserAuthenticated() ? (
+        <Link className="navbar-brand" to="/">React App</Link>
+      {props.loggedIn ? (
         <ul className="nav navbar-nav">
           <li className="nav-item">
-            <a href="/logout" onClick={Auth.deauthenticateUser} >Log out</a>
+            <Link to="/logout" onClick={props.onClick} >Log out</Link>
+          </li>
+          <li className="nav-item">
+            {props.modalButton}
           </li>
         </ul>
       ) : (
@@ -26,6 +30,7 @@ const NavBarForm = props => (
     </div>
   </nav>
 );
+};
 
 
 export default NavBarForm;
