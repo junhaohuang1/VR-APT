@@ -1,5 +1,7 @@
 
 const initialState = {
+  registering: false,
+  registered: false,
   name:"",
   email: '',
   password: '',

@@ -3,6 +3,7 @@ import Auth from "../Auth.js";
 let user = Auth.checkUserLoggedIn();
 const initialState = user ? ({
   loggedIn: true,
+  username: user.name,
   errors:{},
   successMessage:"",
   email: '',
@@ -10,6 +11,7 @@ const initialState = user ? ({
   }) :
 ({
   loggedIn: false,
+  username: "",
   errors:{},
   successMessage:"",
   email: '',
@@ -36,6 +38,7 @@ export function authentication(state = initialState, action) {
         loggedIn: true,
         loggingIn: false,
         userData: action.payload.data.user.userData,
+        username: action.payload.data.user.userData.name,
         errors:{},
         email: '',
         password: ''

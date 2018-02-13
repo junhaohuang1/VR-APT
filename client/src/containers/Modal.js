@@ -4,6 +4,7 @@ import { modalActions } from '../actions';
 import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import {Link} from 'react-router-dom';
 
 const customStyles = {
   content : {
@@ -50,7 +51,7 @@ class NavBarModal extends React.Component {
   render() {
     return (
       <div>
-        <span onClick={this.props.openModal}>Upload Image</span>
+        <Link to="#" onClick={this.props.openModal}>Upload Image</Link>
         <Modal
           isOpen={this.props.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
