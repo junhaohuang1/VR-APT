@@ -4,8 +4,9 @@ module.exports = {
     findAll: function(req, res){
         db.Scene
           .find({name:"scene"})
+         // .populate("note")
           .then(data => res.json(data))
-          .catch(err => res.status(422).json(err))
+          .catch(err => res.status(400).json(err))
     },
     update: function(req, res){
         db.Scene
@@ -29,4 +30,5 @@ module.exports = {
           })
 
     }
+
 }

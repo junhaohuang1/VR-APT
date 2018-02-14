@@ -72,6 +72,7 @@
                "factor": 0.7
             },
            
+
            {
                 "type": "Furniture",
                 "title": "Restoration Hardware Sofa",
@@ -175,6 +176,7 @@
                 "text": "MAXWELL SOFA, $1995 - $6895",
                 "uri": "https://www.restorationhardware.com/catalog/product/product.jsp?productId=prod8760140&categoryId=cat10050004"
              }
+
          ]
       }
    }

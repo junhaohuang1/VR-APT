@@ -1,39 +1,53 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { BrowserRouter as Router} from 'react-router-dom';
-import { Redirect, Route } from 'react-router'
+import { Route, Switch } from 'react-router'
+import { Redirect} from 'react-router-dom'
 import LoginPage from './containers/LoginPage.js';
 import HomePage from './containers/HomePage.js';
 import SignUpPage from './containers/SignUpPage.js';
 import NavBar from './containers/NavBar.js';
-import Auth from './Auth';
-import CarouselPage from './components/Carousel'
-import DashboardPage from './containers/DashboardPage'
-// import Footer from './components/Footer'
+import CarouselPage from './components/Carousel';
 
 
 // remove tap delay, essential for MaterialUI to work properly
-// <Router history={browserHistory} routes={routes} />
-//
 injectTapEventPlugin();
-const App = () => {
-  return (
+
+const ConnectedSwitch = connect(state => ({
+  location: state.router.location
+}))(Switch)
+
+const App = (props) => {
+  return(
     <MuiThemeProvider muiTheme={getMuiTheme()}>
-    <Router>
-        <div>
-          <NavBar/>
-          <Route exact path = '/' component = {Auth.isUserAuthenticated()?
+      <div>
+        <NavBar/>
+        <ConnectedSwitch>
+          <Route exact path = '/' component = {props.loggedIn?
             CarouselPage : HomePage
           }/>
-          <Route exact path = '/signup' component = {SignUpPage}/>
-          <Route exact path = '/login' component = {LoginPage}/>
-          <Route exact path="/logout"  render={() => (<Redirect to="/"/>)}/>
-          {/* <Footer /> */}
-        </div>
-    </Router>
+          <Route path = '/signup' component = {SignUpPage}/>
+          <Route path = '/checkMeOut' component = {LoginPage}/>
+          <Route path = '/login' component = {LoginPage}/>
+          <Route path="/logout"  render={() => (<Redirect to="/"/>)}/>
+        </ConnectedSwitch>
+      </div>
     </MuiThemeProvider>
   )
 }
-export default App;
+function mapStateToProps(state) {
+  return {
+    loggedIn: state.authentication.loggedIn,
+    location: state.router.location
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

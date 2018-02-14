@@ -1,12 +1,24 @@
 class Auth {
 
+
+
+   /**
+    * Get a token value.
+    *
+    * @returns {string}
+    */
+
+  static checkUserLoggedIn(){
+    return localStorage.getItem('user')
+  }
+
   /**
    * Authenticate a user. Save a token string in Local Storage
    *
-   * @param {string} token
+   * @param {string} user
    */
-  static authenticateUser(token) {
-    localStorage.setItem('token', token);
+  static authenticateUser(user) {
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   /**
@@ -15,7 +27,7 @@ class Auth {
    * @returns {boolean}
    */
   static isUserAuthenticated() {
-    return localStorage.getItem('token') !== null;
+    return localStorage.getItem('user') !== null;
   }
 
   /**
@@ -23,18 +35,10 @@ class Auth {
    *
    */
   static deauthenticateUser() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
-  /**
-   * Get a token value.
-   *
-   * @returns {string}
-   */
 
-  static getToken() {
-    return localStorage.getItem('token');
-  }
 
 }
 
