@@ -124,6 +124,7 @@ export default class Final_Project extends React.Component {
                                     <FurniButton
                                         key = {surrounding.title}
                                         pixelsPerMeter = {PPM}
+                                        color = {surrounding.color}
                                         title = {surrounding.title}
                                         uri = {surrounding.uri}
                                         text = {surrounding.text}

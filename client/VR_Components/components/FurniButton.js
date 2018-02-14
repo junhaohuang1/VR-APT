@@ -22,21 +22,16 @@ export default class FurniButton extends React.Component{
         NativeModules.LinkingManager.openURL(this.props.uri)
     }
 
-    colorChange(e){
-        const clicked = e.target
-        console.log(clicked)
-        switch (clicked){
-            case 52:
+    colorChangeBlue(e){
                 this.props.changeColor(4)
-            break;
-            case 53:
-                this.props.changeColor(5)
-            break;
-            case 54:
-                this.props.changeColor(6)
-            break
-        }
+    }
 
+    colorChangeYellow(e){
+                this.props.changeColor(5)
+    }
+
+    colorChangeGreen(e){
+                this.props.changeColor(6)
     }
 
     render(){
@@ -99,6 +94,7 @@ export default class FurniButton extends React.Component{
                     style = {{
                         flexDirection:'row',
                     }}>
+                    {this.props.color &&
                     <View
                         style = {{
                             flexDirection:'column',
@@ -110,16 +106,16 @@ export default class FurniButton extends React.Component{
 
                         }}>
                         <VrButton style = {{
-                            backgroundColor:'blue',
+                            backgroundColor:'rgb(23, 54, 104)',
                             height: 0.1 * PPM,
                             width: 0.1 * PPM,
                             borderRadius: 0.05 * PPM,
                             marginTop: 0.1 * PPM,
                             marginRight: 0.05 * PPM
                         }}
-                            onClick = {this.colorChange.bind(this)}/>
+                            onClick = {this.colorChangeBlue.bind(this)}/>
                         <VrButton style = {{
-                            backgroundColor:'red',
+                            backgroundColor:'rgb(193, 150, 21)',
                             height: 0.1 * PPM,
                             width: 0.1 * PPM,
                             borderRadius: 0.05 * PPM,
@@ -127,9 +123,9 @@ export default class FurniButton extends React.Component{
                             marginRight: 0.05 * PPM
 
                         }}
-                            onClick = {this.colorChange.bind(this)}/>
+                            onClick = {this.colorChangeYellow.bind(this)}/>
                         <VrButton style = {{
-                            backgroundColor:'yellow',
+                            backgroundColor:'rgb(50, 219, 208)',
                             height: 0.1 * PPM,
                             width: 0.1 * PPM,
                             borderRadius: 0.05 * PPM,
@@ -137,9 +133,9 @@ export default class FurniButton extends React.Component{
                             marginRight: 0.05 * PPM
 
                         }}
-                         onClick = {this.colorChange.bind(this)}/>
+                         onClick = {this.colorChangeGreen.bind(this)}/>
 
-                    </View>
+                    </View>}
                     <Image
                         style = {{
                             height: 0.3* PPM,
