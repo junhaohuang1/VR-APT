@@ -72,15 +72,111 @@
                "factor": 0.7
             },
            
+
+           {
+                "type": "Furniture",
+                "title": "Restoration Hardware Sofa",
+                "rotationY": 60,
+                "rotationZ":-20,
+                "factor":1,
+                "color":"true",
+                "text": "MAXWELL SOFA, $1995 - $6895",
+                "uri": "https://www.restorationhardware.com/catalog/product/product.jsp?productId=prod8760140&categoryId=cat10050004"
+             }
+         ]
+      },
+      "4":{
+         "rotationOffset": -40,
+         "uri":"./projects/good/blue.jpg",
+         "surroundings":[
             {
-               "type": "Furniture",
-               "title": "Sofa",
-               "rotationY": 290,
+               "text":"Kitchen",
+               "rotationY": -60,
                "rotationZ":0,
-               "factor":1,
-               "text": "The Chester Biergarten is ideal for group dining and social gatherings. Enjoy casual picnic-table seating and views of the historic Meatpacking District.",
-               "attributionUri": "https://unsplash.com/photos/JKMnm3CIncw"
-            }
+               "PhotoId":"2",
+               "factor": 1
+            },
+            {
+               "text":"Dinning Room",
+               "rotationY": -40,
+               "rotationZ":0,
+               "PhotoId":"1",
+               "factor": 0.7
+            },
+           
+           {
+                "type": "Furniture",
+                "title": "Restoration Hardware Sofa",
+                "rotationY": 60,
+                "rotationZ":-20,
+                "factor":1,
+                "color":"true",
+                "text": "MAXWELL SOFA, $1995 - $6895",
+                "uri": "https://www.restorationhardware.com/catalog/product/product.jsp?productId=prod8760140&categoryId=cat10050004"
+             }
+         ]
+      },
+      "5":{
+         "rotationOffset": -40,
+         "uri":"./projects/good/yellow.jpg",
+         "surroundings":[
+            {
+               "text":"Kitchen",
+               "rotationY": -60,
+               "rotationZ":0,
+               "PhotoId":"2",
+               "factor": 1
+            },
+            {
+               "text":"Dinning Room",
+               "rotationY": -40,
+               "rotationZ":0,
+               "PhotoId":"1",
+               "factor": 0.7
+            },
+           
+           {
+                "type": "Furniture",
+                "title": "Restoration Hardware Sofa",
+                "rotationY": 60,
+                "rotationZ":-20,
+                "factor":1,
+                "color":"true",
+                "text": "MAXWELL SOFA, $1995 - $6895",
+                "uri": "https://www.restorationhardware.com/catalog/product/product.jsp?productId=prod8760140&categoryId=cat10050004"
+             }
+         ]
+      },
+      "6":{
+         "rotationOffset": -40,
+         "uri":"./projects/good/green.jpg",
+         "surroundings":[
+            {
+               "text":"Kitchen",
+               "rotationY": -60,
+               "rotationZ":0,
+               "PhotoId":"2",
+               "factor": 1
+            },
+            {
+               "text":"Dinning Room",
+               "rotationY": -40,
+               "rotationZ":0,
+               "PhotoId":"1",
+               "factor": 0.7
+            },
+           
+           {
+                "type": "Furniture",
+                "title": "Restoration Hardware Sofa",
+                "rotationY": 60,
+                "rotationZ":-20,
+                "factor":1,
+                "color":"true",
+                "text": "MAXWELL SOFA, $1995 - $6895",
+                "uri": "https://www.restorationhardware.com/catalog/product/product.jsp?productId=prod8760140&categoryId=cat10050004"
+             }
+
          ]
       }
    }
