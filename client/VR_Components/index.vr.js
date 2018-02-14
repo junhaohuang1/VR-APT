@@ -8,7 +8,7 @@ import {
   VrButton
 } from 'react-vr';
 import PropTypes from 'prop-types'
-import axios from "axios";
+
 
 //import buttons
 import RoomButton from './components/RoomButton';
@@ -60,6 +60,11 @@ export default class Final_Project extends React.Component {
             rotation:data.firstSpotRotation
         })
 
+    }
+
+    changeColor(newdata){
+        console.log("werwe")
+        this.setState({locationId: newdata})
     }
 
     render(){
@@ -119,9 +124,11 @@ export default class Final_Project extends React.Component {
                                     <FurniButton
                                         key = {surrounding.title}
                                         pixelsPerMeter = {PPM}
+                                        color = {surrounding.color}
                                         title = {surrounding.title}
                                         uri = {surrounding.uri}
                                         text = {surrounding.text}
+                                        changeColor = {this.changeColor.bind(this)}
                                         translateX = {degreesToPixels(surrounding.rotationY)}
                                         translateZ = {degreesToPixels(surrounding.rotationZ)} />
                                 )
