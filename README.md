@@ -25,6 +25,6 @@ A website enabling 3d panorma interactive experience to present apartments/desig
         );
     })
     ```
-    * Third tiral: trying to incoperate the html for react vr into the one used for normal react (to be experimented)
+   * Third tiral: trying to incoperate the html for react vr into the one used for normal react (to be experimented)
  * Watch out for .gitignore file before deployment, the default setting is not to push stuff in build folder
  * When using cylinder panel, convert real meter to pixel ----- index.vr.js
